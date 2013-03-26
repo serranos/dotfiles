@@ -27,8 +27,8 @@ alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 #alias wget="curl -L --compressed -C - -O"
 
 # TODO.TXT specific
-export GTD_CONTEXTS=/Users/serrano/Documents/\@TRUNK/todo/notes/contexts
-export GTD_PROJECTS=/Users/serrano/Documents/\@TRUNK/todo/notes/projects
+export GTD_CONTEXTS=$HOME/Documents/\@TRUNK/todo/notes/contexts
+export GTD_PROJECTS=$HOME/Documents/\@TRUNK/todo/notes/projects
 alias contexts='cat $GTD_CONTEXTS'
 alias projects='cat $GTD_PROJECTS'
 alias t='todo.sh -d ~/.todo'
