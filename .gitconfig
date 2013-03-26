@@ -1,0 +1,11 @@
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    lg = log --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an] %Creset' --graph --date=short
+    lc = log --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an] %Creset' --graph --abbrev-commit --date=short --stat
+    tc = log -1 --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an] %Creset' --graph --abbrev-commit --date=short --stat
+    wc = whatchanged --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an]%Creset' --abbrev-commit --date=short --name-status
+    type = cat-file -t
+    dump = cat-file -p
