@@ -24,6 +24,7 @@ alias pycheck='pep8 --ignore=E501 --show-source --show-pep8'
 alias mdown='markdown.pl --html4tags'
 alias encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
+#alias wget="curl -L --compressed -C - -O"
 
 # TODO.TXT specific
 export GTD_CONTEXTS=/Users/serrano/Documents/\@TRUNK/todo/notes/contexts
@@ -48,9 +49,13 @@ export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/"
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
+# PostgreSQL
+#source /Library/PostgreSQL/8.4/pg_env.sh
+export LC_ALL=C
+
 # Development Environments
-source $HOME/git.env
-source $HOME/python.env
+source $HOME/.config/git.env
+source $HOME/.config/python.env
 
 # VIM
 export EDITOR='vi'
@@ -80,5 +85,11 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-## LOCAL INCLUDES ##
+# INCLUDE SCRIPTS #
+
+## Development Environments ##
+source $HOME/.config/git.env
+source $HOME/.config/python.env
+
+## Local ##
 source $HOME/.profile.local
