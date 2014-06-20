@@ -1,4 +1,4 @@
-dotfiles/serranos
+serranos/dotfiles
 =================
 
 Stash of configuration files.
