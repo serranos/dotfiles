@@ -1,9 +1,10 @@
-alias ga='git add '
-alias gb='git branch '
+alias gp='git push'
+alias ga='git add'
+alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
-alias go='git checkout '
-alias gs='git status '
+alias go='git checkout'
+alias gs='git status'
 
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
