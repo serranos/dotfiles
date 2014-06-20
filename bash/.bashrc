@@ -21,10 +21,11 @@ alias digr='dig +short -x'
 alias vi='vim'
 alias pyclean='find . -name "*.pyc" -exec rm {} \;'
 alias pycheck='pep8 --ignore=E501 --show-source --show-pep8'
-alias mdown='markdown.pl --html4tags'
 alias encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
-#alias wget="curl -L --compressed -C - -O"
+alias chrome='open -a "Google Chrome"'
+alias mh='mdown_html'
+alias ta='tmux attach-session -t '
 
 # TODO.TXT specific
 export GTD_CONTEXTS=$HOME/Documents/\@TRUNK/todo/notes/contexts
@@ -49,13 +50,19 @@ export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/"
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
+# Java
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home"
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Java Algorithms Course
+#export HOME_ALGO=/Users/serrano/Documents/\@TRUNK/Library/Algorithms/Princeton\ Online\ Courses/Algorithms\,\ Part\ I
+#export CLASSPATH=$CLASSPATH:$HOME_ALGO/lib/*
+
 # PostgreSQL
 #source /Library/PostgreSQL/8.4/pg_env.sh
-export LC_ALL=C
-
-# Development Environments
-source $HOME/.config/git.env
-source $HOME/.config/python.env
+#export LC_ALL=C
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # VIM
 export EDITOR='vi'
@@ -70,11 +77,12 @@ vj() {
 alias tmux='tmux -u'
 
 # Markdown
-export MDOWN_HDR="<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>
-<body>"
-export MDOWN_FTR="</body></html>"
+#alias mdown='markdown.pl --html4tags'
+#export MDOWN_HDR="<?xml version='1.0' encoding='utf-8'?>
+#<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
+#<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>
+#<body>"
+#export MDOWN_FTR="</body></html>"
 
 # Color less - also affects manpages (Arch style)
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -85,11 +93,9 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-# INCLUDE SCRIPTS #
-
 ## Development Environments ##
-source $HOME/.config/git.env
-source $HOME/.config/python.env
+source $HOME/.bashrc.git
+source $HOME/.bashrc.python
 
 ## Local ##
-source $HOME/.profile.local
+source $HOME/.bashrc.local
