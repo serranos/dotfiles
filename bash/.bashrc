@@ -25,9 +25,12 @@ alias encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 alias chrome='open -a "Google Chrome"'
 alias mh='mdown_html'
-alias ta='tmux attach-session -t '
 
-# TODO.TXT specific
+# Tmux
+alias ta='tmux attach-session -t '
+alias tns='tmux new-session -s '
+
+# TODO.TXT
 export GTD_CONTEXTS=$HOME/Documents/\@TRUNK/todo/notes/contexts
 export GTD_PROJECTS=$HOME/Documents/\@TRUNK/todo/notes/projects
 alias contexts='cat $GTD_CONTEXTS'
