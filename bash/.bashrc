@@ -35,7 +35,7 @@ alias projects='cat $GTD_PROJECTS'
 alias t='todo.sh -d ~/.todo'
 alias gtd='cd $HOME/Documents/@TRUNK/todo'
 alias gtdn='cd $HOME/Documents/@TRUNK/todo/notes'
-source ~/.bash_completion.d/todo_completion
+source $HOME/.bash_completion.d/todo_completion
 export TEXT_TEMPLATES='$HOME/CloudPT/library/text_templates'
 
 # X11
@@ -55,12 +55,9 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Hom
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Java Algorithms Course
-#export HOME_ALGO=/Users/serrano/Documents/\@TRUNK/Library/Algorithms/Princeton\ Online\ Courses/Algorithms\,\ Part\ I
+#export HOME_ALGO=$HOME/Documents/\@TRUNK/Library/Algorithms/Princeton\ Online\ Courses/Algorithms\,\ Part\ I
 #export CLASSPATH=$CLASSPATH:$HOME_ALGO/lib/*
 
-# PostgreSQL
-#source /Library/PostgreSQL/8.4/pg_env.sh
-#export LC_ALL=C
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -75,14 +72,6 @@ vj() {
 
 # Tmux related
 alias tmux='tmux -u'
-
-# Markdown
-#alias mdown='markdown.pl --html4tags'
-#export MDOWN_HDR="<?xml version='1.0' encoding='utf-8'?>
-#<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
-#<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>
-#<body>"
-#export MDOWN_FTR="</body></html>"
 
 # Color less - also affects manpages (Arch style)
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
