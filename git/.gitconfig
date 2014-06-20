@@ -1,3 +1,15 @@
+[core]
+    excludesfile = $HOME/.gitignore_global
+    editor = /usr/bin/vim
+
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+
 [alias]
     co = checkout
     ci = commit
@@ -9,3 +21,12 @@
     wc = whatchanged --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an]%Creset' --abbrev-commit --date=short --name-status
     type = cat-file -t
     dump = cat-file -p
+
+[diff]
+    tool = opendiff
+
+[difftool]
+    prompt = false
+
+[push]
+    default = simple
