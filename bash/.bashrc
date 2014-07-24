@@ -27,6 +27,7 @@ alias chrome='open -a "Google Chrome"'
 alias mh='mdown_html'
 
 # Tmux
+alias tmux='tmux -u'
 alias ta='tmux attach-session -t '
 alias tns='tmux new-session -s '
 
@@ -36,10 +37,15 @@ export GTD_PROJECTS=$HOME/Documents/\@TRUNK/todo/notes/projects
 alias contexts='cat $GTD_CONTEXTS'
 alias projects='cat $GTD_PROJECTS'
 alias t='todo.sh -d ~/.todo'
+alias gta='t add'
+alias gtaa='t adda'
+alias gtpv='t projectview'
+alias gtl='t lately'
 alias gtd='cd $HOME/Documents/@TRUNK/todo'
 alias gtdn='cd $HOME/Documents/@TRUNK/todo/notes'
 source $HOME/.bash_completion.d/todo_completion
 export TEXT_TEMPLATES='$HOME/CloudPT/library/text_templates'
+alias gtt='cd $TEXT_TEMPLATES'
 
 # X11
 export DISPLAY=127.0.0.1:0.0
@@ -58,23 +64,22 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Hom
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Java Algorithms Course
-#export HOME_ALGO=$HOME/Documents/\@TRUNK/Library/Algorithms/Princeton\ Online\ Courses/Algorithms\,\ Part\ I
-#export CLASSPATH=$CLASSPATH:$HOME_ALGO/lib/*
+export HOME_ALGO=$HOME/Documents/\@TRUNK/Library/Algorithms/Princeton\ Online\ Courses/Algorithms\,\ Part\ I
+export CLASSPATH=$CLASSPATH:$HOME_ALGO/lib/*
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # VIM
 export EDITOR='vi'
-vd() {
-  vim "+cd $1" "+TlistAddFilesRecursive . [^_]*py\|*html\|*css" +TlistOpen
+vp() {
+  vim "+TlistAddFilesRecursive . [^_]*py\|*html\|*css"
 }
 vj() {
-  vim "+cd $1" "+TlistAddFilesRecursive . [^_]*java" +TlistOpen
+  vim "+TlistAddFilesRecursive . [^_]*java"
 }
 
-# Tmux related
-alias tmux='tmux -u'
+export CLICOLOR=1
 
 # Color less - also affects manpages (Arch style)
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
