@@ -36,16 +36,22 @@ export GTD_CONTEXTS=$HOME/Documents/\@TRUNK/todo/notes/contexts
 export GTD_PROJECTS=$HOME/Documents/\@TRUNK/todo/notes/projects
 alias contexts='cat $GTD_CONTEXTS'
 alias projects='cat $GTD_PROJECTS'
-alias t='todo.sh -d ~/.todo'
-alias gta='t add'
-alias gtaa='t adda'
-alias gtpv='t projectview'
-alias gtl='t lately'
-alias gtd='cd $HOME/Documents/@TRUNK/todo'
-alias gtdn='cd $HOME/Documents/@TRUNK/todo/notes'
+alias gt='todo.sh -d ~/.todo'
+alias gta='gt -t add'
+alias gtaa='gt -t adda'
+alias gtpa='gt p a'
+alias gtpb='gt p b'
+alias gtpc='gt p c'
+alias gtdp='gt dp'
+alias gtpv='gt projectview'
+alias gtl='gt lately'
+alias gtls='gt ls'
+alias gtlsp='gt lsp'
+alias gogt='cd $HOME/Documents/@TRUNK/todo'
+alias gogtn='cd $HOME/Documents/@TRUNK/todo/notes'
 source $HOME/.bash_completion.d/todo_completion
 export TEXT_TEMPLATES='$HOME/CloudPT/library/text_templates'
-alias gtt='cd $TEXT_TEMPLATES'
+alias gott='cd $TEXT_TEMPLATES'
 
 # X11
 export DISPLAY=127.0.0.1:0.0
