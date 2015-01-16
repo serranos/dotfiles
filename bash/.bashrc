@@ -28,8 +28,9 @@ alias mh='mdown_html'
 
 # Tmux
 alias tmux='tmux -u'
-alias ta='tmux attach-session -t '
-alias tns='tmux new-session -s '
+alias ta='tmux attach-session -t'
+alias tns='tmux new-session -s'
+alias tls='tmux ls'
 
 # TODO.TXT
 alias gt='todo.sh'
@@ -37,9 +38,11 @@ alias gta='gt -t add'
 alias gtaa='gt -t adda'
 alias gtdp='gt dp'
 alias gtpv='gt projectview'
+alias gtb='gt birdseye'
 alias gtl='gt lately'
 alias gtls='gt ls'
 alias gtlsp='gt lsp'
+alias gtd='gt do'
 alias gogt='cd $HOME/Documents/@TRUNK/todo'
 alias gogtn='cd $HOME/Documents/@TRUNK/todo/notes'
 source $HOME/.bash_completion.d/todo_completion
@@ -52,9 +55,6 @@ export DISPLAY=127.0.0.1:0.0
 # PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/bin:/opt/local/sbin:$TEXT_TEMPLATES:/usr/local/mysql/bin:/usr/local/lib/node_modules/npm/bin:$PATH
 
-# MySQL
-export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/"
-
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
@@ -65,6 +65,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 # Java Algorithms Course
 export HOME_ALGO=$HOME/Documents/\@TRUNK/Library/Algorithms/Princeton\ Online\ Courses/Algorithms\,\ Part\ I
 export CLASSPATH=$CLASSPATH:$HOME_ALGO/lib/*
+source "$HOME_ALGO/Environment Setup/setup_env"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
