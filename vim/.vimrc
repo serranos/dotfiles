@@ -275,10 +275,6 @@ let g:pymode_folding = 0
 let g:pymode_rope = 1
 " where to open the definition
 let g:pymode_rope_goto_definition_cmd = 'vnew'
-" nmap <leader>j :RopeGotoDefinition<CR>
-" map <leader>r :RopeRename<CR>
-" nmap <leader>D :tab split<CR>:RopeGotoDefinition<CR>
-" nmap <leader>o :RopeFindOccurrences<CR>
 
 " don't let pyflakes allways override the quickfix list
 let g:pyflakes_use_quickfix = 0
