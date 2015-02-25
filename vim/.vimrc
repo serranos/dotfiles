@@ -142,8 +142,6 @@ set ls=2
 
 set t_Co=256
 
-" colorscheme fisa
-" colorscheme Tomorrow-Night
 colorscheme solarized
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
