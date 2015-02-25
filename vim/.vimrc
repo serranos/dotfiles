@@ -13,9 +13,6 @@ set binary
 " Attempt to determine the type of a file based on its name and possibly its
 " contents.  Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
-" call pathogen#infect()
-" execute pathogen#infect()
-" filetype off
 filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
 
@@ -111,9 +108,6 @@ set ruler
 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
-
-" status line
-"set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%][WORKON=%{pythonworkon}]\ %)
 
 " Show the command in the status line
 set showcmd
@@ -220,8 +214,6 @@ Bundle 'scrooloose/nerdcommenter'
 
 " Class/module browser
 Bundle 'majutsushi/tagbar'
-" toggle Tagbar display
-" autofocus on Tagbar open
 let g:tagbar_autofocus = 1
 
 " Code and files fuzzy finder
@@ -246,22 +238,12 @@ Bundle 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline_symbols = {}
 " unicode symbols
-" let g:airline_left_sep = '◣'
-" let g:airline_left_alt_sep = '◣'
-" let g:airline_left_sep = '⮁'
-" let g:airline_left_alt_sep = '⮁'
 let g:airline_left_sep = '▶'
 let g:airline_left_alt_sep = '▶'
 
-" let g:airline_right_sep = '◢'
-" let g:airline_right_alt_sep = '◢'
 let g:airline_right_sep = '◀'
 let g:airline_right_alt_sep = '◀'
-" let g:airline_right_sep = '⮃'
-" let g:airline_right_alt_sep = '⮃'
 
-" let g:airline_symbols.linenr = '␊'
-" let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
@@ -334,11 +316,6 @@ nnoremap <C-L> :nohl<CR><C-L>
 " I don't think it matters whether I use noremap or map, unless
 " :tabnext gets bound to something else, which would be weird.
 noremap <c-tab> :tabnext<cr>
-
-" map <C-h> <C-w>h
-" map <C-j> <C-w>j
-" map <C-k> <C-w>k
-" map <C-l> <C-w>l
 
 map <leader>l :Align
 nmap <leader><space> :call whitespace#strip_trailing()<CR>
