@@ -372,6 +372,7 @@ iab   _sapo_    http://www.sapo.pt
 iab   _email_   sergio.m.serrano@telecom.pt
 iab   _time_    <C-R>=strftime("%X")<CR>
 iab   _date_    <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
+iab   _wday_    <C-R>=strftime("%V")<CR>
 iab   inpfile   <C-R>=expand("%:p")<cr>   " Insert the current filename *with* path.
 iab   infile    <C-R>=expand("%:t:r")<cr> " Insert the current filename *without* path.
 iab   inpath    <C-R>=expand("%:p:h")<cr> " Insert the path of current file.

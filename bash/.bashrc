@@ -26,6 +26,10 @@ alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 alias chrome='open -a "Google Chrome"'
 alias mh='mdown_html'
 
+# Calendar
+alias cday='cal | grep -A7 -B7 --color=auto $(date +%d)'
+alias cdayw='ncal -w | grep -A7 -B7 --color=auto $(date +%d)'
+
 # Tmux
 alias tmux='tmux -u'
 alias ta='tmux attach-session -t'
