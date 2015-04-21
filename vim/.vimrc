@@ -64,7 +64,7 @@ set list
 set listchars=tab:▸\ ,trail:▫
 
 set cursorline
-set nocursorcolumn
+set cursorcolumn
 
 " Don't loose too much when vim cashs
 set updatecount=50
