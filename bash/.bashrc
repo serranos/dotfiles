@@ -24,6 +24,7 @@ alias pycheck='pep8 --ignore=E501 --show-source --show-pep8'
 alias encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 alias chrome='open -a "Google Chrome"'
+alias mail.sapo='open -a "Google Chrome" --args -app="https://mail.sapo.pt"'
 alias mh='mdown_html'
 
 # Calendar

@@ -88,9 +88,10 @@ set incsearch
 set backspace=indent,eol,start
 
 " yank and paste with the system clipboard. Does not work with TMUX.
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
+"if $TMUX == ''
+"  set clipboard+=unnamed
+"endif
+set clipboard=unnamed
 
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
@@ -146,6 +147,7 @@ colorscheme solarized
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 set background=dark
+"set background=light
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -304,6 +306,9 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 " In MacVim, you can have multiple tabs open. This mapping makes
 " ctrl-tab switch between them, like browser tabs.
