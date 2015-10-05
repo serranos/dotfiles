@@ -64,7 +64,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/bin:/opt/local/s
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home"
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Java Algorithms Course
@@ -98,6 +98,17 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 ## Development Environments ##
 source $HOME/.bashrc.git
 source $HOME/.bashrc.python
+
+### Vagrant ###
+alias vup='vagrant up'
+alias vh='vagrant halt'
+alias vs='vagrant suspend'
+alias vr='vagrant resume'
+alias vrld='vagrant reload'
+alias vssh='vagrant ssh'
+alias vstat='vagrant status'
+alias vgstat='vagrant version && vagrant global-status'
+alias vgstatu='vagrant version && vagrant global-status --prune'
 
 ## Local ##
 source $HOME/.bashrc.local
