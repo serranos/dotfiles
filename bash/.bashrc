@@ -54,6 +54,13 @@ source $HOME/.bash_completion.d/todo_completion
 export TEXT_TEMPLATES='$HOME/CloudPT/library/text_templates'
 alias gott='cd $HOME/CloudPT/library/text_templates'
 
+# History
+
+# append history entries..
+shopt -s histappend
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 # X11
 export DISPLAY=127.0.0.1:0.0
 
@@ -112,3 +119,6 @@ alias vgstatu='vagrant version && vagrant global-status --prune'
 
 ## Local ##
 source $HOME/.bashrc.local
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
