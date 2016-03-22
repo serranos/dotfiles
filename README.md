@@ -13,6 +13,8 @@ Bash configuration files:
 * `.bashrc` - Bash main configuration file. Includes other more specific config files.
 * `.bashrc.git` - Git specific config.
 * `.bashrc.python` - Python specific config.
+* `.bashrc.perl` - Perl specific config.
+* `.bashrc.ruby` - Ruby specific config.
 
 ### git ###
 
