@@ -202,6 +202,9 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'hdima/python-syntax'
 let python_highlight_all = 1
 
+" Ruby
+Bundle 'tpope/vim-rails'
+
 " Better file browser
 Bundle 'scrooloose/nerdtree'
 " Open a NERDTree automatically when vim starts up if no files were specified?
@@ -339,10 +342,10 @@ noremap <F8> :TagbarToggle<CR>
 noremap <leader>tb :TagbarToggle<CR>
 " nmap <leader>] :TagbarToggle<CR>
 "nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>t :CtrlP<CR>
+"nmap <leader>t :CtrlP<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nmap <leader>tp :CtrlPCmdPalette<CR>
-noremap <leader>t :TaskList<CR>
+"noremap <leader>t :TaskList<CR>
 
 " To activate/deactivate autoindenting and input mapping during a copy-paste
 set   pastetoggle=<F6>

@@ -102,10 +102,6 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-## Development Environments ##
-source $HOME/.bashrc.git
-source $HOME/.bashrc.python
-
 ### Vagrant ###
 alias vup='vagrant up'
 alias vh='vagrant halt'
@@ -117,8 +113,14 @@ alias vstat='vagrant status'
 alias vgstat='vagrant version && vagrant global-status'
 alias vgstatu='vagrant version && vagrant global-status --prune'
 
+### Docker ###
+alias start_docker_term="source /Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
+
 ## Local ##
 source $HOME/.bashrc.local
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+## Development Environments ##
+source $HOME/.bashrc.git
+source $HOME/.bashrc.perl
+source $HOME/.bashrc.python
+source $HOME/.bashrc.ruby
