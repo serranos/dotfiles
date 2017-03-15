@@ -198,12 +198,21 @@ Bundle 'tpope/vim-fugitive'
 " Git diff icons on the side of the file lines
 Bundle 'airblade/vim-gitgutter'
 
+" Markdown
+Bundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
+let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'python', 'ruby', 'xml', 'html', 'bash=sh']
+
 " Python syntax highlighting script for Vim
 Bundle 'hdima/python-syntax'
 let python_highlight_all = 1
 
 " Ruby
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
+
+" Elixir
+Bundle 'elixir-lang/vim-elixir'
 
 " Better file browser
 Bundle 'scrooloose/nerdtree'
@@ -252,6 +261,12 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
 
+" Snippets
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+
 " Pending tasks list
 Bundle 'fisadev/FixedTaskList.vim'
 
@@ -298,6 +313,11 @@ ab putu # -*- coding: utf-8 -*-
 
 " Autocompletion
 Bundle 'AutoComplPop'
+
+" Hashicorp goodies
+
+Bundle 'vim-terraform'
+let g:terraform_align=1
 
 "------------------------------------------------------------
 " Useful mappings
@@ -348,7 +368,7 @@ nmap <leader>tp :CtrlPCmdPalette<CR>
 "noremap <leader>t :TaskList<CR>
 
 " To activate/deactivate autoindenting and input mapping during a copy-paste
-set   pastetoggle=<F6>
+set pastetoggle=<F6>
 
 " Toggle line numbers
 nnoremap <F4> :set nonumber!<CR>
@@ -451,3 +471,10 @@ endfunction
 let pyindent_nested_paren="&sw*2"
 let pyindent_open_paren="&sw*2"
 
+" Ctags
+set tags=./tags;
+" Remaping default ctags shortcuts
+map <C-h> <C-T>
+map <C-l> <C-]>
+"map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"map <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
