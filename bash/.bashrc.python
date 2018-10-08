@@ -4,6 +4,9 @@ export PROJECT_HOME=$HOME/Documents/project
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 source /usr/local/bin/virtualenvwrapper.sh
 
+# Aliases
+alias mkvirtualenv3='mkvirtualenv --python=$(which python3)'
+
 # Django Specific
 setdj() {
     PROJECT_PARENT=`python -c "import os; print os.getcwd().partition('$1')[0]"`

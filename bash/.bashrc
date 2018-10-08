@@ -13,9 +13,8 @@ alias tc='tar cvfz'
 alias tl='tail -f'
 alias k9='kill -9'
 alias ipc='ipcalc'
-alias minic='sudo minicom -c on'
 alias whcy='whois -h whois.cymru.com'
-alias whri='whois -h ris.ripe.net'
+alias whri='whois -h riswhois.ripe.net'
 alias whma='whois -h pdns.circl.lu'
 alias digr='dig +short -x'
 alias vi='vim'
@@ -26,6 +25,26 @@ alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 alias chrome='open -a "Google Chrome"'
 alias mail.sapo='open -a "Google Chrome" --args -app="https://mail.sapo.pt"'
 alias mh='mdown_html'
+alias myip='curl -s whatismyip.akamai.com'
+alias bubu='brew update && brew upgrade'
+
+# PKI
+function jksprint { keytool -v -list -keystore $1; }
+function pemprint { openssl x509 -in $1 -noout -issuer -subject -dates -fingerprint -serial; }
+function pemprintfull { openssl x509 -in $1 -text -noout; }
+function pemget { echo | openssl s_client -showcerts -connect $1; }
+function pemgetprint { echo | openssl s_client -showcerts -connect $1 | openssl x509 -in /dev/stdin -text -noout; }
+function pemgetsplit { echo | openssl s_client -showcerts -connect $1 2> /dev/null | awk -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++} inc {print > ("level" c ".crt")} /---END CERTIFICATE-----/{inc=0}'; }
+function pemcachain { openssl verify -CAfile $1 $2; }
+function pemmodpriv { openssl rsa -noout -modulus -in $1 | md5; }
+function pemmodpub { openssl x509 -noout -modulus -in $1 | md5; }
+function pemmodreq { openssl req -noout -modulus -in $1 | md5; }
+function crlpemprint { openssl crl -inform PEM -in $1 -text -noout; }
+function crlderprint { openssl crl -inform DER -in $1 -text -noout; }
+function pemkeyremove { openssl rsa -in $1 -out $2; }
+function p12topem { openssl pkcs12 -in $1 -out $2 -clcerts; }
+function pemtop12 { openssl pkcs12 -export -inkey $1 -in $1 -out $2 ; }
+function pemserver { echo '0:4433' ; openssl s_server -cert $1 -key $2 -www; }
 
 # Calendar
 alias cday='cal | grep -A7 -B7 --color=auto $(date +%d)'
@@ -48,14 +67,14 @@ alias gtl='gt lately'
 alias gtls='gt ls'
 alias gtlsp='gt lsp'
 alias gtd='gt do'
-alias gogt='cd $HOME/Documents/@TRUNK/todo'
-alias gogtn='cd $HOME/Documents/@TRUNK/todo/notes'
+alias gogt='cd $HOME/Documents/TRUNK/todo'
+alias gogtn='cd $HOME/Documents/TRUNK/todo/notes'
 source $HOME/.bash_completion.d/todo_completion
 export TEXT_TEMPLATES='$HOME/CloudPT/library/text_templates'
-alias gott='cd $HOME/CloudPT/library/text_templates'
+alias gott='cd ~/Documents/text_templates'
+alias gottw='cd ~/Documents/text_templates/work'
 
 # History
-
 # append history entries..
 shopt -s histappend
 # After each command, save and reload history
@@ -64,26 +83,24 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # X11
 export DISPLAY=127.0.0.1:0.0
 
+# Golang
+export GOPATH=$HOME/go
+
 # PATH
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/bin:/opt/local/sbin:$TEXT_TEMPLATES:/usr/local/mysql/bin:/usr/local/lib/node_modules/npm/bin:$PATH
+export PATH=$GOPATH/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/bin:/opt/local/sbin:$TEXT_TEMPLATES:/usr/local/mysql/bin:/usr/local/lib/node_modules/npm/bin:$PATH
 
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home"
 export PATH=$JAVA_HOME/bin:$PATH
-
-# Java Algorithms Course
-export HOME_ALGO=$HOME/Documents/\@TRUNK/Library/Algorithms/Princeton\ Online\ Courses/Algorithms\,\ Part\ I
-export CLASSPATH=$CLASSPATH:$HOME_ALGO/lib/*
-source "$HOME_ALGO/Environment Setup/setup_env"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # VIM
-export EDITOR='vi'
+export EDITOR='vim'
 vp() {
   vim "+TlistAddFilesRecursive . [^_]*py\|*html\|*css"
 }
@@ -113,14 +130,24 @@ alias vstat='vagrant status'
 alias vgstat='vagrant version && vagrant global-status'
 alias vgstatu='vagrant version && vagrant global-status --prune'
 
-### Docker ###
-alias start_docker_term="source /Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
-
 ## Local ##
 source $HOME/.bashrc.local
 
 ## Development Environments ##
 source $HOME/.bashrc.git
-source $HOME/.bashrc.perl
 source $HOME/.bashrc.python
 source $HOME/.bashrc.ruby
+source $HOME/.bashrc.aws
+source $HOME/.bashrc.tkd
+
+## Vault and consul
+complete -C /Users/serrano/bin/vault vault
+complete -C /Users/serrano/bin/consul consul
+
+# ASDF versioning tool - https://github.com/asdf-vm/asdf
+source /usr/local/opt/asdf/asdf.sh
+
+# Ranger
+export RANGER_LOAD_DEFAULT_RC="FALSE"
+
+qotd

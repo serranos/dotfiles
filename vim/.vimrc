@@ -175,8 +175,6 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-
 " Front for the Perl module App::Ack
 Bundle 'mileszs/ack.vim'
 
@@ -210,6 +208,8 @@ let python_highlight_all = 1
 " Ruby
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-bundler'
+Bundle 'vim-ruby/vim-ruby'
+let g:ruby_recommended_style = 1
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
@@ -260,6 +260,10 @@ let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
+"" Enable the list of buffers
+"let g:airline#extensions#tabline#enabled = 1
+"" Show just the filename
+"let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -315,9 +319,12 @@ ab putu # -*- coding: utf-8 -*-
 Bundle 'AutoComplPop'
 
 " Hashicorp goodies
-
 Bundle 'vim-terraform'
 let g:terraform_align=1
+
+" PlantUml plugin
+Bundle 'scrooloose/vim-slumlord'
+Bundle 'aklt/plantuml-syntax'
 
 "------------------------------------------------------------
 " Useful mappings
@@ -361,8 +368,8 @@ nmap <leader>f :NERDTreeFind<CR>
 noremap <F8> :TagbarToggle<CR>
 noremap <leader>tb :TagbarToggle<CR>
 " nmap <leader>] :TagbarToggle<CR>
-"nmap <leader>b :CtrlPBuffer<CR>
-"nmap <leader>t :CtrlP<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>t :CtrlP<CR>
 nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nmap <leader>tp :CtrlPCmdPalette<CR>
 "noremap <leader>t :TaskList<CR>
@@ -396,8 +403,6 @@ endif
 " Abbreviations
 iab   _pi_      3.1415926535897932384626433832795028841972
 iab   _e_       2.7182818284590452353602874713526624977573
-iab   _sapo_    http://www.sapo.pt
-iab   _email_   sergio.m.serrano@telecom.pt
 iab   _time_    <C-R>=strftime("%X")<CR>
 iab   _date_    <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 iab   _wday_    <C-R>=strftime("%V")<CR>
