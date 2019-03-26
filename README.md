@@ -34,6 +34,12 @@ Vim configuration files:
 
 * `.vimrc` - Vim main configuration file.
 
+### tig ###
+
+Tig configuration files:
+
+* `.tigrc` - Tig main configuration file.
+
 ### tmux ###
 
 Tmux configuration files:

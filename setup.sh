@@ -26,5 +26,8 @@ ln -s $DOTFILES_HOME/bash/.bashrc.ruby $HOME/.bashrc.ruby
 mv $HOME/.tmux.conf $HOME/.tmux.conf.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/tmux/.tmux.conf $HOME/.tmux.conf
 
+mv $HOME/.tigrc $HOME/.tigrc.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/tig/.tigrc $HOME/.tigrc
+
 mv $HOME/.ssh/config $HOME/.ssh/config.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/ssh/config $HOME/.ssh/config
