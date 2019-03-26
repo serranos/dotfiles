@@ -22,6 +22,12 @@ Git configuration files:
 
 * `.gitconfig` - Git main configuration and git aliases.
 
+### ssh ###
+
+SSH client configuration files:
+
+* `config` - SSH client configuration file.
+
 ### vim ###
 
 Vim configuration files:
