@@ -27,6 +27,7 @@ alias mail.sapo='open -a "Google Chrome" --args -app="https://mail.sapo.pt"'
 alias mh='mdown_html'
 alias myip='curl -s whatismyip.akamai.com'
 alias bubu='brew update && brew upgrade'
+alias r='ranger'
 
 # PKI
 function jksprint { keytool -v -list -keystore $1; }
@@ -70,9 +71,13 @@ alias gtd='gt do'
 alias gogt='cd $HOME/Documents/TRUNK/todo'
 alias gogtn='cd $HOME/Documents/TRUNK/todo/notes'
 source $HOME/.bash_completion.d/todo_completion
-export TEXT_TEMPLATES='$HOME/CloudPT/library/text_templates'
-alias gott='cd ~/Documents/text_templates'
-alias gottw='cd ~/Documents/text_templates/work'
+complete -F _todo gt
+
+# Text
+export TT='/Users/serrano/Documents/TRUNK/text_templates'
+alias gott='cd "${TT}"'
+alias gottw='cd "${TT}"/work'
+alias gott='cd "${TT}"'
 
 # History
 # append history entries..
