@@ -1,4 +1,4 @@
-"------------------------------------------------------------
+"-------vim-airline-----------------------------------------------------
 " Features {{{1
 "
 " These options and commands enable some very useful features in Vim, that
@@ -68,6 +68,8 @@ set cursorcolumn
 
 " Don't loose too much when vim cashs
 set updatecount=50
+
+set termguicolors
 
 "------------------------------------------------------------
 " Usability options {{{1
@@ -143,12 +145,6 @@ set ls=2
 
 set t_Co=256
 
-colorscheme solarized
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-set background=dark
-"set background=light
-
 "------------------------------------------------------------
 " Indentation options {{{1
 "
@@ -174,6 +170,10 @@ call vundle#rc()
 
 " required!
 Bundle 'gmarik/vundle'
+
+" colorscheme
+Bundle 'morhetz/gruvbox'
+colorscheme gruvbox
 
 " Front for the Perl module App::Ack
 Bundle 'mileszs/ack.vim'
@@ -247,17 +247,19 @@ let g:ctrlp_custom_ignore = {
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 
 Bundle 'bling/vim-airline'
+" powerline symbols
 let g:airline_powerline_fonts = 1
 let g:airline_symbols = {}
-" unicode symbols
 let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '▶'
-
 let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '◀'
-
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.branch = ''
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
 "" Enable the list of buffers
