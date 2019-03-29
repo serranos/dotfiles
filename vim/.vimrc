@@ -69,7 +69,9 @@ set cursorcolumn
 " Don't loose too much when vim cashs
 set updatecount=50
 
-set termguicolors
+" This option breaks the color in tmux
+" TODO: fix it
+"set termguicolors
 
 "------------------------------------------------------------
 " Usability options {{{1
@@ -174,6 +176,14 @@ Bundle 'gmarik/vundle'
 " colorscheme
 Bundle 'morhetz/gruvbox'
 colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
 " Front for the Perl module App::Ack
 Bundle 'mileszs/ack.vim'
@@ -189,6 +199,9 @@ let g:syntastic_warning_symbol='⚠'
 
 " Provides easy code formatting in Vim by integrating existing code formatters
 Bundle 'Chiel92/vim-autoformat'
+
+" Pairs of handy bracket mappings
+Bundle 'tpope/vim-unimpaired'
 
 " a Git wrapper so awesome, it should be illegal
 Bundle 'tpope/vim-fugitive'
