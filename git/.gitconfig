@@ -15,16 +15,16 @@
     ci = commit
     st = status
     br = branch
-    lg = log --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an] %Creset' --graph --date=short
-    lc = log --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an] %Creset' --graph --abbrev-commit --date=short --stat
-    tc = log -1 --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an] %Creset' --graph --abbrev-commit --date=short --stat
-    wc = whatchanged --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an]%Creset' --abbrev-commit --date=short --name-status
+    lg = log --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an (%GK %G?)] %Creset' --graph --date=short
+    lc = log --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an (%GK %G?)] %Creset ' --graph --abbrev-commit --date=short --stat
+    tc = log -1 --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an (%GK %G?)] %Creset' --graph --abbrev-commit --date=short --stat
+    wc = whatchanged --pretty=format:'%Cred%h %ad%Creset | %C(yellow)%d%Creset %s %C(bold blue)[%an (%GK %G?)] %Creset' --abbrev-commit --date=short --name-status
     type = cat-file -t
     dump = cat-file -p
     mkpr = "!f() { \
     BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD); \
     git push -u origin "${BRANCH_NAME}"; \
-    hub pull-request --no-edit; \
+    hub pull-request -c -l 'needs review'; \
     };f"
 
 [diff]
