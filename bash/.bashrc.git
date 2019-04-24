@@ -10,4 +10,6 @@ alias glc='git lc'
 
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='\033[1;32m\]\u@\h:\033[1;36m\]\w\[\033[1;33m\]$(__git_ps1)\[\033[00m\]\$ '
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWCOLORHINTS=true
+export PS1='\[\033[1;32m\]\u@\h:\[\033[1;36m\]\w\[\033[1;33m\]$(__git_ps1)\[\033[00m\]\$ '
