@@ -334,13 +334,19 @@ ab putu # -*- coding: utf-8 -*-
 Bundle 'AutoComplPop'
 
 " Hashicorp goodies
-Bundle 'vim-terraform'
+Bundle 'hashivim/vim-terraform'
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+au! BufNewFile,BufReadPost *.{tfvars,tf} set filetype=terraform
+autocmd FileType terraform setlocal ts=2 sts=2 sw=2 expandtab
 
 " PlantUml plugin
 Bundle 'scrooloose/vim-slumlord'
 Bundle 'aklt/plantuml-syntax'
+
+" Handle YAML files
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "------------------------------------------------------------
 " Useful mappings
