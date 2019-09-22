@@ -24,28 +24,32 @@ alias encode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias decode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 alias chrome='open -a "Google Chrome"'
 alias mail.sapo='open -a "Google Chrome" --args -app="https://mail.sapo.pt"'
+alias burp.chrome='open -a "Google Chrome Canary" --args --proxy-server=http://localhost:8080'
 alias mh='mdown_html'
 alias myip='curl -s whatismyip.akamai.com'
 alias bubu='brew update && brew upgrade'
 alias r='ranger'
 
+# Cheatsheets all the way
+function cht { curl https://cht.sh/"$1"; }
+
 # PKI
-function jksprint { keytool -v -list -keystore $1; }
-function pemprint { openssl x509 -in $1 -noout -issuer -subject -dates -fingerprint -serial; }
-function pemprintfull { openssl x509 -in $1 -text -noout; }
-function pemget { echo | openssl s_client -showcerts -connect $1; }
-function pemgetprint { echo | openssl s_client -showcerts -connect $1 | openssl x509 -in /dev/stdin -text -noout; }
-function pemgetsplit { echo | openssl s_client -showcerts -connect $1 2> /dev/null | awk -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++} inc {print > ("level" c ".crt")} /---END CERTIFICATE-----/{inc=0}'; }
-function pemcachain { openssl verify -CAfile $1 $2; }
-function pemmodpriv { openssl rsa -noout -modulus -in $1 | md5; }
-function pemmodpub { openssl x509 -noout -modulus -in $1 | md5; }
-function pemmodreq { openssl req -noout -modulus -in $1 | md5; }
-function crlpemprint { openssl crl -inform PEM -in $1 -text -noout; }
-function crlderprint { openssl crl -inform DER -in $1 -text -noout; }
-function pemkeyremove { openssl rsa -in $1 -out $2; }
-function p12topem { openssl pkcs12 -in $1 -out $2 -clcerts; }
-function pemtop12 { openssl pkcs12 -export -inkey $1 -in $1 -out $2 ; }
-function pemserver { echo '0:4433' ; openssl s_server -cert $1 -key $2 -www; }
+function jksprint { keytool -v -list -keystore "$1"; }
+function pemprint { openssl x509 -in "$1" -noout -issuer -subject -dates -fingerprint -serial; }
+function pemprintfull { openssl x509 -in "$1" -text -noout; }
+function pemget { echo | openssl s_client -showcerts -connect "$1"; }
+function pemgetprint { echo | openssl s_client -showcerts -connect "$1" | openssl x509 -in /dev/stdin -text -noout; }
+function pemgetsplit { echo | openssl s_client -showcerts -connect "$1" 2> /dev/null | awk -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++} inc {print > ("level" c ".crt")} /---END CERTIFICATE-----/{inc=0}'; }
+function pemcachain { openssl verify -CAfile "$1" "$2"; }
+function pemmodpriv { openssl rsa -noout -modulus -in "$1" | md5; }
+function pemmodpub { openssl x509 -noout -modulus -in "$1" | md5; }
+function pemmodreq { openssl req -noout -modulus -in "$1" | md5; }
+function crlpemprint { openssl crl -inform PEM -in "$1" -text -noout; }
+function crlderprint { openssl crl -inform DER -in "$1" -text -noout; }
+function pemkeyremove { openssl rsa -in "$1" -out "$2"; }
+function p12topem { openssl pkcs12 -in "$1" -out "$2" -clcerts; }
+function pemtop12 { openssl pkcs12 -export -inkey "$1" -in "$1" -out "$2" ; }
+function pemserver { echo '0:4433' ; openssl s_server -cert "$1" -key "$2" -www; }
 
 # Calendar
 alias cday='cal | grep -A7 -B7 --color=auto $(date +%d)'
@@ -154,5 +158,12 @@ source /usr/local/opt/asdf/asdf.sh
 
 # Ranger
 export RANGER_LOAD_DEFAULT_RC="FALSE"
+
+# Autocomplete
+source /usr/local/etc/bash_completion.d/*
+
+# Heroku auto-complete
+# heroku autocomplete:script bash
+HEROKU_AC_BASH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
 
 qotd
