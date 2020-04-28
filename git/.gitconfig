@@ -7,7 +7,7 @@
 [core]
     excludesfile = /Users/serrano/.gitignore_global
     editor = /usr/bin/vim
-    pager = delta --dark --plus-color="#012800" --minus-color="#340001" --theme="zenburn"
+    pager = delta --dark --keep-plus-minus-markers
 
 [interactive]
     diffFilter = delta --color-only
