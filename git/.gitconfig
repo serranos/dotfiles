@@ -7,10 +7,18 @@
 [core]
     excludesfile = /Users/serrano/.gitignore_global
     editor = /usr/bin/vim
-    pager = delta --plus-color="#012800" --minus-color="#340001"
+    pager = delta --dark --plus-color="#012800" --minus-color="#340001" --theme="zenburn"
 
 [interactive]
     diffFilter = delta --color-only
+
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
+
+[mergetool "sourcetree"]
+    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 [alias]
     co = checkout
