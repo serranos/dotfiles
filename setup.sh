@@ -31,3 +31,6 @@ ln -s $DOTFILES_HOME/tig/.tigrc $HOME/.tigrc
 
 mv $HOME/.ssh/config $HOME/.ssh/config.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/ssh/config $HOME/.ssh/config
+
+mv $HOME/.gitconfig $HOME/.gitconfig.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/git/.gitconfig $HOME/.gitconfig
