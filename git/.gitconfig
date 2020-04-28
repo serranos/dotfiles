@@ -1,14 +1,16 @@
+[http]
+    sslVerify = false
+
+[commit]
+    gpgsign=true
+
 [core]
-    excludesfile = $HOME/.gitignore_global
+    excludesfile = /Users/serrano/.gitignore_global
     editor = /usr/bin/vim
+    pager = delta --plus-color="#012800" --minus-color="#340001"
 
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
-
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+[interactive]
+    diffFilter = delta --color-only
 
 [alias]
     co = checkout
