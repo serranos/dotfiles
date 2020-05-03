@@ -2,6 +2,9 @@
 
 export DOTFILES_HOME=`pwd`
 
+mv $HOME/.zshrc $HOME/.zshrc.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/zsh/.zshrc $HOME/.zshrc
+
 mv $HOME/.profile $HOME/.profile.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc $HOME/.profile
 
@@ -34,3 +37,7 @@ ln -s $DOTFILES_HOME/ssh/config $HOME/.ssh/config
 
 mv $HOME/.gitconfig $HOME/.gitconfig.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/git/.gitconfig $HOME/.gitconfig
+
+mv /Users/serrano/.alacritty.yml /Users/serrano/.alacritty.yml.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/alacritty/.alacritty.yml /Users/serrano/.alacritty.yml
+
