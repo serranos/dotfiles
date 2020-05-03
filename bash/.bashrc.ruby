@@ -1,3 +1,19 @@
 # Virtual Environment Wrapper
-export PATH="$HOME/.rbenv/shims:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+eval "$(rbenv init -)"
+
+# Hanami aliases
+alias hc='hanami console'
+alias hd='hanami destroy'
+alias hg='hanami generate'
+alias hgm='hanami generate migration'
+alias hs='hanami server'
+alias hsp='hanami server -p'
+alias hr='hanami routes'
+alias hdc='hanami db create'
+alias hdd='hanami db drop'
+alias hdp='hanami db prepare'
+alias hda='hanami db apply'
+alias hdv='hanami db version'
+alias hdrs='hdd && hdp'
+alias hdtp='HET hdp'
+alias hrg='hr | grep'

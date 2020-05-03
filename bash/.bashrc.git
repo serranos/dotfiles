@@ -8,8 +8,19 @@ alias gs='git status'
 alias gtc='git tc'
 alias glc='git lc'
 
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWCOLORHINTS=true
-export PS1='\[\033[1;32m\]\u@\h:\[\033[1;36m\]\w\[\033[1;33m\]$(__git_ps1)\[\033[00m\]\$ '
+
+if [ ! -z "${ZSH}" ]; then
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=true
+    GIT_PS1_SHOWSTASHSTATE=true
+    GIT_PS1_SHOWCOLORHINTS=true
+    export PS1='\[\033[1;32m\]\u@\h:\[\033[1;36m\]\w\[\033[1;33m\]$(__git_ps1)\[\033[00m\]\$ '
+fi
+
+set_gh_cli() {
+    echo ""
+    echo "GitHub Cli - Setting environment..."
+    echo ""
+    read -s -p "GITHUB_TOKEN: " GITHUB_TOKEN
+    export BUNDLE_GITHUB__COM="${GITHUB_TOKEN}:x-oauth-basic"
+}
