@@ -173,7 +173,14 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
+" PlantUml plugin
+Bundle 'aklt/plantuml-syntax'
+autocmd BufRead,BufNewFile *.puml setfiletype plantuml
+"let g:plantuml_set_makeprg = 1
+"let g:plantuml_executable_script = 'java -jar $HOME/apps/plantuml/plantuml.jar'
+
 " colorscheme
+set background=dark
 Bundle 'morhetz/gruvbox'
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
@@ -340,10 +347,6 @@ let g:terraform_fmt_on_save=1
 au! BufNewFile,BufReadPost *.{tfvars,tf} set filetype=terraform
 autocmd FileType terraform setlocal ts=2 sts=2 sw=2 expandtab
 
-" PlantUml plugin
-Bundle 'scrooloose/vim-slumlord'
-Bundle 'aklt/plantuml-syntax'
-
 " Golang
 Bundle 'fatih/vim-go'
 " run :GoBuild or :GoTestCompile based on the go file
@@ -378,6 +381,7 @@ let g:go_highlight_generate_tags = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
+let g:go_version_warning = 0
 "let g:go_auto_sameids = 1
 " Use ctrl-] or gd to jump to a definition, locally or globally
 " Use ctrl-t to jump back to the previous location
@@ -386,10 +390,19 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
-
 " Handle YAML files
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+let g:syntastic_yaml_checkers = ['yamllint']
+
+" OPA
+Bundle 'tsandall/vim-rego'
+let g:formatdef_rego = '"opa fmt"'
+let g:formatters_rego = ['rego']
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+"let g:autoformat_verbosemode = 1
+au! BufNewFile,BufReadPost *.rego set filetype=rego
 
 "------------------------------------------------------------
 " Useful mappings
