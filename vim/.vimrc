@@ -487,7 +487,7 @@ iab   _wday_    <C-R>=strftime("%V")<CR>
 iab   inpfile   <C-R>=expand("%:p")<cr>   " Insert the current filename *with* path.
 iab   infile    <C-R>=expand("%:t:r")<cr> " Insert the current filename *without* path.
 iab   inpath    <C-R>=expand("%:p:h")<cr> " Insert the path of current file.
-iab   _pdb_     import pdb; pdb.set_trace()
+" iab   _pdb_     import pdb; pdb.set_trace()
 iab   tbm       também
 iab   pq        porque
 iab   Pq        Porque
