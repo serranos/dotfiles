@@ -74,6 +74,10 @@ alias gtlsp='gt lsp'
 alias gtd='gt do'
 alias gogt='cd $HOME/Documents/TRUNK/todo'
 alias gogtn='cd $HOME/Documents/TRUNK/todo/notes'
+alias pc='punch'
+alias pcw='punch what'
+alias pca='punch archive'
+alias pcr='punch report'
 
 # Text
 alias gott='cd "${TT}"'
