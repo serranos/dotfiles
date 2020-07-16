@@ -221,6 +221,8 @@ Bundle 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'python', 'ruby', 'xml', 'html', 'bash=sh']
 
+Bundle 'godlygeek/tabular'
+
 " Python syntax highlighting script for Vim
 Bundle 'hdima/python-syntax'
 let python_highlight_all = 1
