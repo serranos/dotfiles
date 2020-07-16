@@ -8,7 +8,6 @@ alias gs='git status'
 alias gtc='git tc'
 alias glc='git lc'
 
-
 if [ ! -z "${ZSH}" ]; then
     source /usr/local/etc/bash_completion.d/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=true
@@ -21,6 +20,10 @@ set_gh_cli() {
     echo ""
     echo "GitHub Cli - Setting environment..."
     echo ""
-    read -s -p "GITHUB_TOKEN: " GITHUB_TOKEN
+    if [[ "$SHELL" =~ "zsh" ]]; then
+        read -s "?GITHUB_TOKEN: " GITHUB_TOKEN
+    else
+        read -s -p "GITHUB_TOKEN: " GITHUB_TOKEN
+    fi
     export BUNDLE_GITHUB__COM="${GITHUB_TOKEN}:x-oauth-basic"
 }
