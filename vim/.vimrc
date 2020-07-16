@@ -486,10 +486,14 @@ iab   _e_       2.7182818284590452353602874713526624977573
 iab   _time_    <C-R>=strftime("%X")<CR>
 iab   _date_    <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 iab   _wday_    <C-R>=strftime("%V")<CR>
-iab   inpfile   <C-R>=expand("%:p")<cr>   " Insert the current filename *with* path.
-iab   infile    <C-R>=expand("%:t:r")<cr> " Insert the current filename *without* path.
-iab   inpath    <C-R>=expand("%:p:h")<cr> " Insert the path of current file.
+" Insert the current filename *with* path.
+iab   inpfile   <C-R>=expand("%:p")<cr>
+" Insert the current filename *without* path.
+iab   infile    <C-R>=expand("%:t:r")<cr>
+" Insert the path of current file.
+iab   inpath    <C-R>=expand("%:p:h")<cr>
 " iab   _pdb_     import pdb; pdb.set_trace()
+" Common language abbreviations
 iab   tbm       também
 iab   pq        porque
 iab   Pq        Porque
