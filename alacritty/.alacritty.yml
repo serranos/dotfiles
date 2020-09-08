@@ -12,7 +12,7 @@ scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
   history: 10000
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -70,7 +70,8 @@ selection:
   # clipboard.
   save_to_clipboard: true
 
-dynamic_title: true
+window:
+  dynamic_title: true
 
 # Style of the cursor
 #
@@ -79,8 +80,6 @@ dynamic_title: true
 # - Underline
 # - Beam
 cursor_style: Beam
-
-
 
 ## Base16 Gruvbox dark, hard 256 - alacritty color config
 ## Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
