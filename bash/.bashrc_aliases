@@ -80,12 +80,15 @@ alias pco='punch out'
 alias pcw='punch what'
 alias pca='punch archive'
 alias pcr='punch report'
+alias wdb='byebye-work-day'
+alias wdk='kick-work-day'
 
 # Text
 alias gott='cd "${TT}"'
 alias gottw='cd "${TT}"/work'
 alias gott='cd "${TT}"'
-alias cmg='cp "${TT}"/meeting_notes.md "$(date +%Y%m%d%H%M)".md'
+alias cmg='MD="$(date +%Y%m%d%H%M)"; cp "${TT}"/meeting_notes.md "${MD}".md; sed -i "" "s/Date\:/Date\: $(date)/g" ${MD}.md'
+alias cvf='MD="$(date +%Y%m%d%H%M)"; cp "${TT}"/security/vulnarability_management_follow_up.md "${MD}".md; sed -i "" "s/Date\:/Date\: $(date)/g" ${MD}.md'
 
 ### Vagrant ###
 alias vup='vagrant up'
