@@ -87,8 +87,8 @@ alias wdk='kick-work-day'
 alias gott='cd "${TT}"'
 alias gottw='cd "${TT}"/work'
 alias gott='cd "${TT}"'
-alias cmg='MD="$(date +%Y%m%d%H%M)"; cp "${TT}"/meeting_notes.md "${MD}".md; sed -i "" "s/Date\:/Date\: $(date)/g" ${MD}.md'
-alias cvf='MD="$(date +%Y%m%d%H%M)"; cp "${TT}"/security/vulnarability_management_follow_up.md "${MD}".md; sed -i "" "s/Date\:/Date\: $(date)/g" ${MD}.md'
+alias cmg='MD="$(date +%Y%m%d%H%M)"; MF="${MD}.md"; cp "${TT}"/meeting_notes.md "${MF}"; sed -i "" "s/Date\:/Date\: $(date)/g" ${MF}'
+alias cvf='MD="$(date +%Y%m%d%H%M)"; MF="${MD}.md"; cp "${TT}"/security/vulnarability_management_follow_up.md "${MF}"; sed -i "" "s/Date\:/Date\: $(date)/g" ${MF}'
 
 ### Vagrant ###
 alias vup='vagrant up'
