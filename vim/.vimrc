@@ -292,7 +292,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 " Snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
+"Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
 " Pending tasks list

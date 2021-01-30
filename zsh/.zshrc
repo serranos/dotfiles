@@ -29,9 +29,8 @@ source ~/.bashrc.local
 source ~/.bashrc_aliases
 source ~/.bashrc.aws
 source ~/.bashrc.python
-source ~/.bashrc.tkd
 source ~/.bashrc.gcp
-source ~/.bashrc.ruby
+#source ~/.bashrc.ruby
 source ~/.bashrc.git
 
 # Add proper color palette for gruvbox color scheme in vim
@@ -66,7 +65,7 @@ vj() {
 }
 
 # ASDF versioning tool - https://github.com/asdf-vm/asdf
-source /usr/local/opt/asdf/asdf.sh
+#source /usr/local/opt/asdf/asdf.sh
 
 # Ranger
 export RANGER_LOAD_DEFAULT_RC="FALSE"
@@ -84,3 +83,9 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/serrano/Library/Caches/heroku/autocomplete/zsh_s
 
 source ~/apps/z/z.sh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
