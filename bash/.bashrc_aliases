@@ -80,8 +80,8 @@ alias pco='punch out'
 alias pcw='punch what'
 alias pca='punch archive'
 alias pcr='punch report'
-alias wdb='byebye-work-day'
-alias wdk='kick-work-day'
+alias wdb='work-day-byebye'
+alias wdk='work-day-kick'
 
 # Text
 alias gott='cd "${TT}"'
