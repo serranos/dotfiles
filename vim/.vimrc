@@ -195,7 +195,13 @@ nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 " Front for the Perl module App::Ack
 Bundle 'mileszs/ack.vim'
 
-" provides insert mode auto-completion for quotes, parens, brackets, etc
+" Use ripgrep as the search tool
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+
+" Provides insert mode auto-completion for quotes, parens, brackets, etc
 Bundle 'Raimondi/delimitMate'
 
 " Syntax checking hacks for vim
