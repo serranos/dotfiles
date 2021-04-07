@@ -233,12 +233,6 @@ Bundle 'godlygeek/tabular'
 Bundle 'hdima/python-syntax'
 let python_highlight_all = 1
 
-" Ruby
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
-Bundle 'vim-ruby/vim-ruby'
-let g:ruby_recommended_style = 1
-
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
 
