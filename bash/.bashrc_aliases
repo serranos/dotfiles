@@ -1,4 +1,10 @@
 # COMMAND aliases
+alias el='exa -la'
+alias ele='exa -la --extended'
+alias elr='exa -la --recurse'
+alias elg='exa -la --git'
+alias elt='exa -la --tree'
+alias et2='exa -la --tree --level 2'
 alias lla='ls -laGF'
 alias ll='ls -lGF'
 alias g='grep --color=auto'
