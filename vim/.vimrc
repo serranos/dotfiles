@@ -182,8 +182,10 @@ autocmd BufRead,BufNewFile *.puml setfiletype plantuml
 " colorscheme
 set background=dark
 Bundle 'morhetz/gruvbox'
-colorscheme gruvbox
+" workaround to fix spelling errors not being highlighted - https://github.com/morhetz/gruvbox/issues/175
+let g:gruvbox_guisp_fallback = "bg"
 let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
 nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
 nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
@@ -336,7 +338,7 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 " Highlight 'self' keyword
 let g:pymode_syntax_highlight_self = g:pymode_syntax_all
-"Abbreviation
+" Abbreviation
 ab putu # -*- coding: utf-8 -*-
 
 " Autocompletion
