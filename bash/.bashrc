@@ -2,13 +2,6 @@
 #To update your account to use zsh, please run
 #chsh -s /bin/zsh
 
-# Text
-export TT='/Users/serrano/Documents/TRUNK/text_templates'
-
-# TODO.TXT
-source $HOME/.bash_completion.d/todo_completion
-complete -F _todo gt
-
 # History
 # append history entries..
 shopt -s histappend
@@ -47,9 +40,6 @@ source $HOME/.bashrc.local
 complete -C /Users/serrano/bin/vault vault
 complete -C /Users/serrano/bin/consul consul
 
-# ASDF versioning tool - https://github.com/asdf-vm/asdf
-source /usr/local/opt/asdf/asdf.sh
-
 # Autocomplete
 source /usr/local/etc/bash_completion.d/*
 
@@ -65,3 +55,6 @@ source ~/.bashrc.st
 source ~/.bashrc.heroku
 source ~/.bashrc.node
 source ~/.bashrc.python
+source ~/.bashrc.text
+source ~/.bashrc.todo
+source ~/.bashrc.vagrant

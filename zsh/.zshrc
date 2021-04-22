@@ -37,7 +37,7 @@ export HISTCONTROL="ignoredups"
 alias  h='history -i 1'
 
 # PATH
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/bin:/opt/local/sbin:$TEXT_TEMPLATES:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/bin:/opt/local/sbin:$TEXT_TEMPLATES:/usr/local/mysql/bin:/usr/local/lib/node_modules/npm/bin:$PATH
 
 # Add custom aliases
 source ~/.bashrc.local
@@ -45,9 +45,6 @@ source ~/.bashrc_aliases
 
 # Add proper color palette for gruvbox color scheme in vim
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-
-# Text
-export TT="$HOME/Documents/TRUNK/text_templates"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -66,3 +63,6 @@ source ~/.bashrc.st
 source ~/.bashrc.heroku
 source ~/.bashrc.node
 source ~/.bashrc.python
+source ~/.bashrc.text
+source ~/.bashrc.todo
+source ~/.bashrc.vagrant

@@ -25,6 +25,9 @@ Bash configuration files:
 * [.bashrc.perl](bash/.bashrc.perl) - Perl specific config.
 * [.bashrc.python](bash/.bashrc.python) - Python specific config.
 * [.bashrc.ruby](bash/.bashrc.ruby) - Ruby specific config.
+* [.bashrc.text](bash/.bashrc.text) - Text specific config.
+* [.bashrc.todo](bash/.bashrc.todo) - Todo.txt specific config.
+* [.bashrc.vagrant](bash/.bashrc.vagrant) - Vagrant specific config.
 
 ### git
 

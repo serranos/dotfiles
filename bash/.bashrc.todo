@@ -1,0 +1,28 @@
+if [ -n "$BASH_VERSION" ]
+then
+    source $HOME/.bash_completion.d/todo_completion;
+    complete -F _todo gt;
+fi
+
+alias gt='todo.sh'
+alias gta='gt -t add'
+alias gtaa='gt -t adda'
+alias gtdp='gt dp'
+alias gtpv='gt projectview'
+alias gtb='gt birdseye'
+alias gtl='gt lately'
+alias gtls='gt ls'
+alias gtlsp='gt lsp'
+alias gtd='gt do'
+alias gtp='gt p'
+alias gogt='cd $HOME/Documents/TRUNK/todo'
+alias gogtn='cd $HOME/Documents/TRUNK/todo/notes'
+alias pc='punch'
+alias pci='punch in'
+alias pco='punch out'
+alias pcw='punch what'
+alias pca='punch archive'
+alias pcr='punch report'
+alias wdb='work-day-byebye'
+alias wdk='work-day-kick'
+

@@ -44,6 +44,15 @@ ln -s $DOTFILES_HOME/bash/.bashrc.python $HOME/.bashrc.python
 mv $HOME/.bashrc.ruby $HOME/.bashrc.ruby.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.ruby $HOME/.bashrc.ruby
 
+mv $HOME/.bashrc.text $HOME/.bashrc.text.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.text $HOME/.bashrc.text
+
+mv $HOME/.bashrc.todo $HOME/.bashrc.todo.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.todo $HOME/.bashrc.todo
+
+mv $HOME/.bashrc.vagrant $HOME/.bashrc.vagrant.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.vagrant $HOME/.bashrc.vagrant
+
 mv $HOME/.tmux.conf $HOME/.tmux.conf.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/tmux/.tmux.conf $HOME/.tmux.conf
 
