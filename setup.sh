@@ -14,14 +14,32 @@ ln -s $DOTFILES_HOME/vim/.vimrc $HOME/.vimrc
 mv $HOME/.ssh/config $HOME/.ssh/config.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/ssh/config $HOME/.ssh/config
 
+mv $HOME/.bashrc_aliases $HOME/.bashrc_aliases.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc_aliases $HOME/.bashrc_aliases
+
+mv $HOME/.bashrc.gcp $HOME/.bashrc.gcp.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.gcp $HOME/.bashrc.gcp
+
 mv $HOME/.bashrc.git $HOME/.bashrc.git.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.git $HOME/.bashrc.git
 
-mv $HOME/.bashrc.python $HOME/.bashrc.python.old 2>&1 >/dev/null
-ln -s $DOTFILES_HOME/bash/.bashrc.python $HOME/.bashrc.python
+mv $HOME/.bashrc.go $HOME/.bashrc.go.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.go $HOME/.bashrc.go
+
+mv /Users/serrano/.bashrc.heroku $HOME/.bashrc.heroku.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.heroku $HOME/.bashrc.heroku
+
+mv $HOME/.bashrc.java $HOME/.bashrc.java.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.java $HOME/.bashrc.java
+
+mv $HOME/.bashrc.node $HOME/.bashrc.node.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.node $HOME/.bashrc.node
 
 mv $HOME/.bashrc.perl $HOME/.bashrc.perl.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.perl $HOME/.bashrc.perl
+
+mv $HOME/.bashrc.python $HOME/.bashrc.python.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.python $HOME/.bashrc.python
 
 mv $HOME/.bashrc.ruby $HOME/.bashrc.ruby.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.ruby $HOME/.bashrc.ruby

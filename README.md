@@ -16,9 +16,14 @@ Bash configuration files:
 
 * [.bashrc](bash/.bashrc) - Bash main configuration file. Includes other more specific config files.
 * [.bashrc_aliases](bash/.bashrc_aliases) - shell aliases.
+* [.bashrc.gcp](bash/.bashrc.gcp) - GCP specific config.
 * [.bashrc.git](bash/.bashrc.git) - Git specific config.
-* [.bashrc.python](bash/.bashrc.python) - Python specific config.
+* [.bashrc.go](bash/.bashrc.go) - Go specific config.
+* [.bashrc.heroku](bash/.bashrc.heroku) - Heroku specific config.
+* [.bashrc.java](bash/.bashrc.java) - Java specific config.
+* [.bashrc.node](bash/.bashrc.node) - Node.js specific config.
 * [.bashrc.perl](bash/.bashrc.perl) - Perl specific config.
+* [.bashrc.python](bash/.bashrc.python) - Python specific config.
 * [.bashrc.ruby](bash/.bashrc.ruby) - Ruby specific config.
 
 ### git

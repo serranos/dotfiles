@@ -23,3 +23,14 @@ setdj() {
     alias djsm='dj startmigration'
     . ~/.bash_completion.d/django_bash_completion
 }
+
+# Pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# Vim specific
+vp() {
+  vim "+TlistAddFilesRecursive . [^_]*py\|*html\|*css"
+}
