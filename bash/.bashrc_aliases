@@ -11,7 +11,6 @@ alias g='rg'
 alias gr='grep --color=auto'
 alias l='less'
 alias m='more'
-alias h='history'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 alias l.='ls -dG .[a-zA-Z]*'
@@ -35,6 +34,12 @@ alias burp.chrome='open -a "Google Chrome Canary" --args --proxy-server=http://l
 alias mh='mdown_html'
 alias myip='curl -s whatismyip.akamai.com'
 alias bubu='brew update && brew upgrade'
+
+if [ -z "${ZSH}" ]; then
+    alias h='fc -l 1'
+else
+    alias h='history'
+fi
 
 # Cheatsheets all the way
 function cht { curl https://cht.sh/"$1"; }
