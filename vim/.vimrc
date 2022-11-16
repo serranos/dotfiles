@@ -204,7 +204,7 @@ let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
 let g:ack_use_cword_for_empty_search = 1
 
 " Provides insert mode auto-completion for quotes, parens, brackets, etc
-Bundle 'Raimondi/delimitMate'
+"Bundle 'Raimondi/delimitMate'
 
 " Syntax checking hacks for vim
 Bundle 'scrooloose/syntastic'
@@ -215,8 +215,8 @@ let g:syntastic_warning_symbol='⚠'
 " Provides easy code formatting in Vim by integrating existing code formatters
 Bundle 'Chiel92/vim-autoformat'
 
-" Pairs of handy bracket mappings
-Bundle 'tpope/vim-unimpaired'
+"" Pairs of handy bracket mappings
+"Bundle 'tpope/vim-unimpaired'
 
 " a Git wrapper so awesome, it should be illegal
 Bundle 'tpope/vim-fugitive'
@@ -227,16 +227,13 @@ Bundle 'airblade/vim-gitgutter'
 " Markdown
 Bundle 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
-let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'python', 'ruby', 'xml', 'html', 'bash=sh']
+let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'python', 'ruby', 'xml', 'html', 'bash=sh', 'rust']
 
 Bundle 'godlygeek/tabular'
 
 " Python syntax highlighting script for Vim
 Bundle 'hdima/python-syntax'
 let python_highlight_all = 1
-
-" Elixir
-Bundle 'elixir-lang/vim-elixir'
 
 " Better file browser
 Bundle 'scrooloose/nerdtree'
@@ -270,7 +267,7 @@ let g:ctrlp_custom_ignore = {
 " Extension for ctrlp.vim, to have a command palette like sublime text 2
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
 " powerline symbols
 let g:airline_powerline_fonts = 1
 let g:airline_symbols = {}
@@ -309,6 +306,19 @@ Bundle 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
+" Python-mode
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+"
 " don't show lint result every time we save a file
 let g:pymode_lint_write = 0
 " run pep8+pyflakes+pylint validator with \8
@@ -326,6 +336,9 @@ let g:pymode_rope = 1
 " where to open the definition
 let g:pymode_rope_goto_definition_cmd = 'vnew'
 
+let g:pymode_breakpoint = 1
+"let g:pymode_breakpoint_bind = '<leader>b'
+
 " don't let pyflakes allways override the quickfix list
 let g:pyflakes_use_quickfix = 0
 let g:pymode_trim_whitespaces = 1
@@ -338,8 +351,6 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 " Highlight 'self' keyword
 let g:pymode_syntax_highlight_self = g:pymode_syntax_all
-" Abbreviation
-ab putu # -*- coding: utf-8 -*-
 
 " Autocompletion
 Bundle 'AutoComplPop'
@@ -400,13 +411,13 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:syntastic_yaml_checkers = ['yamllint']
 
 " OPA
-Bundle 'tsandall/vim-rego'
-let g:formatdef_rego = '"opa fmt"'
-let g:formatters_rego = ['rego']
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
+"Bundle 'tsandall/vim-rego'
+"let g:formatdef_rego = '"opa fmt"'
+"let g:formatters_rego = ['rego']
+"let g:autoformat_autoindent = 0
+"let g:autoformat_retab = 0
 "let g:autoformat_verbosemode = 1
-au! BufNewFile,BufReadPost *.rego set filetype=rego
+"au! BufNewFile,BufReadPost *.rego set filetype=rego
 
 "------------------------------------------------------------
 " Useful mappings
@@ -461,26 +472,6 @@ set pastetoggle=<F6>
 
 " Toggle line numbers
 nnoremap <F4> :set nonumber!<CR>
-
-if has("gui_macvim")
-  " Press Ctrl-Tab to switch between open tabs (like browser tabs) to
-  " the right side. Ctrl-Shift-Tab goes the other way.
-  noremap <C-Tab> :tabnext<CR>
-  noremap <C-S-Tab> :tabprev<CR>
-
-  " Switch to specific tab numbers with Command-number
-  noremap <D-1> :tabn 1<CR>
-  noremap <D-2> :tabn 2<CR>
-  noremap <D-3> :tabn 3<CR>
-  noremap <D-4> :tabn 4<CR>
-  noremap <D-5> :tabn 5<CR>
-  noremap <D-6> :tabn 6<CR>
-  noremap <D-7> :tabn 7<CR>
-  noremap <D-8> :tabn 8<CR>
-  noremap <D-9> :tabn 9<CR>
-  " Command-0 goes to the last tab
-  noremap <D-0> :tablast<CR>
-endif
 
 " Abbreviations
 iab   _pi_      3.1415926535897932384626433832795028841972
@@ -569,3 +560,13 @@ map <C-h> <C-T>
 map <C-l> <C-]>
 "map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 "map <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Rust
+
+Bundle 'rust-lang/rust.vim'
+"Bundle 'neoclide/coc.nvim'
+"Bundle 'dense-analysis/ale'
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
