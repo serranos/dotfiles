@@ -194,17 +194,8 @@ nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
 nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
 nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
-" Front for the Perl module App::Ack
-Bundle 'mileszs/ack.vim'
-
-" Use ripgrep as the search tool
-let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
-
-" Any empty ack search will search for the work the cursor is on
-let g:ack_use_cword_for_empty_search = 1
-
 " Provides insert mode auto-completion for quotes, parens, brackets, etc
-"Bundle 'Raimondi/delimitMate'
+Bundle 'Raimondi/delimitMate'
 
 " Syntax checking hacks for vim
 Bundle 'scrooloose/syntastic'
@@ -215,8 +206,8 @@ let g:syntastic_warning_symbol='⚠'
 " Provides easy code formatting in Vim by integrating existing code formatters
 Bundle 'Chiel92/vim-autoformat'
 
-"" Pairs of handy bracket mappings
-"Bundle 'tpope/vim-unimpaired'
+" Pairs of handy bracket mappings
+Bundle 'tpope/vim-unimpaired'
 
 " a Git wrapper so awesome, it should be illegal
 Bundle 'tpope/vim-fugitive'
@@ -352,6 +343,10 @@ let g:pymode_syntax_all = 1
 " Highlight 'self' keyword
 let g:pymode_syntax_highlight_self = g:pymode_syntax_all
 
+Bundle 'junegunn/fzf'
+Bundle 'junegunn/fzf.vim'
+nmap <leader>r :Rg<CR>
+
 " Autocompletion
 Bundle 'AutoComplPop'
 
@@ -454,7 +449,6 @@ map <leader>= <C-W>=
 map <leader>j <C-W>j
 map <leader>k <C-W>k
 
-nmap <leader>a :Ack
 " noremap <leader>u :GundoToggle<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
@@ -562,11 +556,8 @@ map <C-l> <C-]>
 "map <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Rust
-
 Bundle 'rust-lang/rust.vim'
-"Bundle 'neoclide/coc.nvim'
-"Bundle 'dense-analysis/ale'
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
+let g:rustfmt_fail_silently = 0"
