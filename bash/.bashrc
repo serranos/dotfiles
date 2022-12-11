@@ -58,3 +58,4 @@ source ~/.bashrc.python
 source ~/.bashrc.text
 source ~/.bashrc.todo
 source ~/.bashrc.vagrant
+source ~/.bashrc.rust
