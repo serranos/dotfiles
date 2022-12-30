@@ -64,8 +64,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'Malabarba/beacon'
 Plug 'hrsh7th/nvim-compe'
-Plug 'sindrets/diffview.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
 Plug 'stevearc/dressing.nvim'
 Plug 'j-hui/fidget.nvim'
 Plug 'lewis6991/gitsigns.nvim'
@@ -78,6 +78,8 @@ Plug 'kylechui/nvim-surround'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/which-key.nvim'
+Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
