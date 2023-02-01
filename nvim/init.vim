@@ -152,16 +152,23 @@ map <leader>= <C-W>=
 map <leader>j <C-W>j
 map <leader>k <C-W>k
 
+nnoremap <F4> :set nonumber!<CR> " Toggle line numbers
+
+" Spelling
+autocmd FileType markdown set spell spelllang=en_us
+" English
+:nmap <F1> :setlocal spell! spelllang=en<cr>
+" Portuguese
+:nmap <F2> :setlocal spell! spelllang=pt<cr>
+
+nmap <leader>r :Rg<CR>
+nmap <leader>g :GitFiles<CR>
+nmap <leader>c :Commits<CR>
+nmap <leader>f :Files<CR>
 nmap <leader>d :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>b :Buffers<CR>
 nnoremap <C-J> :bprev<CR>
 nnoremap <C-K> :bnext<CR>
-
-nnoremap <F4> :set nonumber!<CR> " Toggle line numbers
-
-" FZF mappings
-nmap <leader>r :Rg<CR>
 
 lua << EOF
 require("nvim-autopairs").setup()
@@ -193,6 +200,76 @@ require'compe'.setup {
 EOF
 
 lua << EOF
+local nvim_lsp = require('lspconfig')
+
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', "gopls", "yamlls" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup { on_attach = on_attach }
+end
+
+require('lspconfig')['rust_analyzer'].setup{
+    on_attach = on_attach,
+    ["rust-analyzer"] = {
+      assist = {
+        importEnforceGranularity = true,
+        importPrefix = "crate"
+        },
+      cargo = {
+        allFeatures = true
+        },
+      checkOnSave = {
+        default = "cargo check",
+        command = "clippy"
+        },
+      },
+      inlayHints = {
+        lifetimeElisionHints = {
+          enable = true,
+          useParameterNames = true
+        },
+      },
+}
+
+EOF
+
+lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
       "bash",
@@ -213,47 +290,4 @@ require'nvim-treesitter.configs'.setup {
   -- indent = { enable = true },
   incremental_selection = { enable = true },
 }
-EOF
-
-lua <<EOF
-local opts = {
-  -- rust-tools options
-  tools = {
-    autoSetHints = true,
-    inlay_hints = {
-      show_parameter_hints = true,
-      parameter_hints_prefix = "",
-      other_hints_prefix = "",
-      },
-    },
-
-  -- all the opts to send to nvim-lspconfig
-  -- these override the defaults set by rust-tools.nvim
-  -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-  -- https://rust-analyzer.github.io/manual.html#features
-  server = {
-    settings = {
-      ["rust-analyzer"] = {
-        assist = {
-          importEnforceGranularity = true,
-          importPrefix = "crate"
-          },
-        cargo = {
-          allFeatures = true
-          },
-        checkOnSave = {
-          -- default: `cargo check`
-          command = "clippy"
-          },
-        },
-        inlayHints = {
-          lifetimeElisionHints = {
-            enable = true,
-            useParameterNames = true
-          },
-        },
-      }
-    },
-}
-require('rust-tools').setup(opts)
 EOF
