@@ -300,3 +300,24 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = { enable = true },
 }
 EOF
+
+" Abbreviations
+iab   _pi_      3.1415926535897932384626433832795028841972
+iab   _e_       2.7182818284590452353602874713526624977573
+iab   _time_    <C-R>=strftime("%X")<CR>
+iab   _date_    <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
+iab   _wday_    <C-R>=strftime("%V")<CR>
+" Insert the current filename *with* path.
+iab   inpfile   <C-R>=expand("%:p")<cr>
+" Insert the current filename *without* path.
+iab   infile    <C-R>=expand("%:t:r")<cr>
+" Insert the path of current file.
+iab   inpath    <C-R>=expand("%:p:h")<cr>
+" Common language abbreviations
+iab   tbm       também
+iab   pq        porque
+iab   Pq        Porque
+iab   qd        quando
+iab   Qd        Quando
+iab   qq        qualquer
+iab   Qq        Qualquer
