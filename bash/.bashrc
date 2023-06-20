@@ -51,7 +51,7 @@ qotd
 source ~/.bashrc.java
 source ~/.bashrc.gcp
 source ~/.bashrc.git
-source ~/.bashrc.st
+source ~/.bashrc.ty
 source ~/.bashrc.heroku
 source ~/.bashrc.node
 source ~/.bashrc.python
