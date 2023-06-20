@@ -80,6 +80,8 @@ Plug 'folke/todo-comments.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go'
+Plug 'google/vim-jsonnet'
 
 call plug#end()
 
