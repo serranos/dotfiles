@@ -18,6 +18,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -25,7 +26,7 @@ fi
 autoload bashcompinit && bashcompinit
 
 # VIM
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # ASDF versioning tool - https://github.com/asdf-vm/asdf
 #source /usr/local/opt/asdf/asdf.sh
@@ -37,32 +38,38 @@ export HISTCONTROL="ignoredups"
 alias  h='history -i 1'
 
 # PATH
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/bin:/opt/local/sbin:$TEXT_TEMPLATES:/usr/local/mysql/bin:/usr/local/lib/node_modules/npm/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.local/bin:/opt/local/bin:/opt/local/sbin:$TEXT_TEMPLATES:/usr/local/mysql/bin:/usr/local/lib/node_modules/npm/bin:$PATH
 
 # Add custom aliases
 source ~/.bashrc.local
 source ~/.bashrc_aliases
 
-# Add proper color palette for gruvbox color scheme in vim
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+## Add proper color palette for gruvbox color scheme in vim
+#source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 source ~/apps/z/z.sh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # Add scoped configurations
 source ~/.bashrc.aws
-source ~/.bashrc.java
 source ~/.bashrc.gcp
 source ~/.bashrc.git
-source ~/.bashrc.st
-source ~/.bashrc.heroku
+source ~/.bashrc.go
+source ~/.bashrc.gpg
+source ~/.bashrc.java
 source ~/.bashrc.node
 source ~/.bashrc.python
 source ~/.bashrc.text
 source ~/.bashrc.todo
 source ~/.bashrc.vagrant
+
+# Bitwarden completion
+eval "$(bw completion --shell zsh); compdef _bw bw;"
