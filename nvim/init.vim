@@ -16,7 +16,7 @@ set wildmode=list:longest " Show all alternatives and complete furtherest possib
 set completeopt=menuone,noselect " nvim-compe configuration
 set background=dark
 set colorcolumn=80     " Vertical line on column 80
-set cursorline
+"set cursorline
 set cursorcolumn
 let mapleader = ","
 set nonumber
@@ -48,7 +48,7 @@ autocmd vimrc BufWritePre * :%s/\s\+$//e "clean extra whitespace on write
 let c_space_errors=1
 
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
@@ -67,7 +67,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'stevearc/dressing.nvim'
-Plug 'j-hui/fidget.nvim'
+Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'windwp/nvim-autopairs'
@@ -85,10 +85,10 @@ Plug 'google/vim-jsonnet'
 
 call plug#end()
 
-colorscheme gruvbox
-let g:gruvbox_guisp_fallback = "bg"
-let g:gruvbox_contrast_dark='hard'
+set termguicolors
+colorscheme kanagawa-dragon
 let g:bargreybars_auto=0
+let g:airline_theme='deus'
 let g:airline_powerline_fonts=1
 let g:airline_symbols = {}
 let g:airline_left_sep = '▶'
@@ -143,7 +143,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
+"
 " Split screen vertically and move between screens.
 map <leader>v :vsp<CR>
 map <leader>w <C-W>w
@@ -250,7 +250,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', "gopls", "yamlls" }
+local servers = { 'pyright', "gopls", "yamlls", "tsserver", "terraformls"  }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
@@ -294,6 +294,8 @@ require'nvim-treesitter.configs'.setup {
       "regex",
       "ruby",
       "rust",
+      "terraform",
+      "typescript",
       "toml",
       "yaml"
     },
@@ -302,6 +304,9 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = { enable = true },
 }
 EOF
+
+autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
+autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 
 " Abbreviations
 iab   _pi_      3.1415926535897932384626433832795028841972
