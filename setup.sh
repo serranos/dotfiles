@@ -8,6 +8,9 @@ ln -s $DOTFILES_HOME/zsh/.zshrc $HOME/.zshrc
 mv $HOME/.profile $HOME/.profile.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc $HOME/.profile
 
+mv $HOME/.config/nvim/init.vim $HOME/.config/nvim/init.vim 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/nvim/init.vim $HOME/.config/nvim/init.vim
+
 mv $HOME/.vimrc $HOME/.vimrc.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/vim/.vimrc $HOME/.vimrc
 
@@ -23,11 +26,11 @@ ln -s $DOTFILES_HOME/bash/.bashrc.gcp $HOME/.bashrc.gcp
 mv $HOME/.bashrc.git $HOME/.bashrc.git.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.git $HOME/.bashrc.git
 
+mv $HOME/.bashrc.gpg $HOME/.bashrc.gpg.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.gpg $HOME/.bashrc.gpg
+
 mv $HOME/.bashrc.go $HOME/.bashrc.go.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.go $HOME/.bashrc.go
-
-mv /Users/serrano/.bashrc.heroku $HOME/.bashrc.heroku.old 2>&1 >/dev/null
-ln -s $DOTFILES_HOME/bash/.bashrc.heroku $HOME/.bashrc.heroku
 
 mv $HOME/.bashrc.java $HOME/.bashrc.java.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.java $HOME/.bashrc.java
@@ -43,6 +46,9 @@ ln -s $DOTFILES_HOME/bash/.bashrc.python $HOME/.bashrc.python
 
 mv $HOME/.bashrc.ruby $HOME/.bashrc.ruby.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.ruby $HOME/.bashrc.ruby
+
+mv $HOME/.bashrc.rust $HOME/.bashrc.rust.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/bash/.bashrc.rust $HOME/.bashrc.rust
 
 mv $HOME/.bashrc.text $HOME/.bashrc.text.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/bash/.bashrc.text $HOME/.bashrc.text
@@ -65,6 +71,5 @@ ln -s $DOTFILES_HOME/ssh/config $HOME/.ssh/config
 mv $HOME/.gitconfig $HOME/.gitconfig.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/git/.gitconfig $HOME/.gitconfig
 
-mv /Users/serrano/.alacritty.yml /Users/serrano/.alacritty.yml.old 2>&1 >/dev/null
-ln -s $DOTFILES_HOME/alacritty/.alacritty.yml /Users/serrano/.alacritty.yml
-
+mv $HOME/.alacritty.yml $HOME/.alacritty.yml.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/alacritty/.alacritty.yml $HOME/.alacritty.yml
