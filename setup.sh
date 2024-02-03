@@ -71,5 +71,5 @@ ln -s $DOTFILES_HOME/ssh/config $HOME/.ssh/config
 mv $HOME/.gitconfig $HOME/.gitconfig.old 2>&1 >/dev/null
 ln -s $DOTFILES_HOME/git/.gitconfig $HOME/.gitconfig
 
-mv $HOME/.alacritty.yml $HOME/.alacritty.yml.old 2>&1 >/dev/null
-ln -s $DOTFILES_HOME/alacritty/.alacritty.yml $HOME/.alacritty.yml
+mv $HOME/.alacritty.toml $HOME/.alacritty.toml.old 2>&1 >/dev/null
+ln -s $DOTFILES_HOME/alacritty/.alacritty.toml $HOME/.alacritty.toml
