@@ -48,7 +48,6 @@ autocmd vimrc BufWritePre * :%s/\s\+$//e "clean extra whitespace on write
 let c_space_errors=1
 
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'rebelot/kanagawa.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
@@ -67,7 +66,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'stevearc/dressing.nvim'
-Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
+Plug 'j-hui/fidget.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'windwp/nvim-autopairs'
@@ -82,20 +81,29 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'google/vim-jsonnet'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+"Plug 'gruvbox-community/gruvbox'
+"Plug 'folke/tokyonight.nvim'
+Plug 'navarasu/onedark.nvim'
 
 call plug#end()
 
 set termguicolors
-colorscheme kanagawa-dragon
+"colorscheme tokyonight-night
+let g:onedark_config = {
+    \ 'style': 'deep',
+\}
+colorscheme onedark
 let g:bargreybars_auto=0
-let g:airline_theme='deus'
+"let g:airline_theme='deus'
+let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 let g:airline_symbols = {}
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.spell = 'Š'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.maxlinenr = ''
@@ -115,6 +123,9 @@ autocmd vimrc FileType json setlocal expandtab tabstop=2 shiftwidth=2
 autocmd vimrc FileType markdown set wrap
 autocmd vimrc FileType go setlocal nolist listchars&    " don't print tabs in go files
 autocmd vimrc FileType make setlocal nolist listchars&    " don't print tabs in go files
+
+" MArkdown
+let g:markdown_minlines = 500
 
 " Rust
 let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
@@ -136,13 +147,16 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" fzf bindings - mimic telescope https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings
+let $FZF_DEFAULT_OPTS="--bind \"ctrl-d:preview-down,ctrl-u:preview-up\""
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 "
 " Split screen vertically and move between screens.
 map <leader>v :vsp<CR>
@@ -179,6 +193,7 @@ require('gitsigns').setup()
 require("symbols-outline").setup()
 require("todo-comments").setup()
 require("which-key").setup()
+require'lspconfig'.marksman.setup{}
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
