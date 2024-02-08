@@ -166,82 +166,65 @@ set expandtab
 " two characters wide.
 set tabstop=4
 
-" let Vundle manage Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" colorscheme
+set background=dark
 
-" required!
-Bundle 'gmarik/vundle'
+call plug#begin()
 
 " PlantUml plugin
-Bundle 'aklt/plantuml-syntax'
+Plug 'aklt/plantuml-syntax'
 autocmd BufRead,BufNewFile *.puml setfiletype plantuml
 "let g:plantuml_set_makeprg = 1
 "let g:plantuml_executable_script = 'java -jar $HOME/apps/plantuml/plantuml.jar'
 
-" colorscheme
-set background=dark
-Bundle 'morhetz/gruvbox'
-" workaround to fix spelling errors not being highlighted - https://github.com/morhetz/gruvbox/issues/175
-let g:gruvbox_guisp_fallback = "bg"
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
-nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
-nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
-
-nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
-nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
-nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
-
 " Provides insert mode auto-completion for quotes, parens, brackets, etc
-Bundle 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Syntax checking hacks for vim
-Bundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
 " Provides easy code formatting in Vim by integrating existing code formatters
-Bundle 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 
 " Pairs of handy bracket mappings
-Bundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " a Git wrapper so awesome, it should be illegal
-Bundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Git diff icons on the side of the file lines
-Bundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Markdown
-Bundle 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'python', 'ruby', 'xml', 'html', 'bash=sh', 'rust']
 
-Bundle 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
 " Python syntax highlighting script for Vim
-Bundle 'hdima/python-syntax'
+Plug 'hdima/python-syntax'
 let python_highlight_all = 1
 
 " Better file browser
-Bundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Open a NERDTree automatically when vim starts up if no files were specified?
 autocmd vimenter * if !argc() | NERDTree | endif
 " Ignore files on NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
 " Code commenter
-Bundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Class/module browser
-Bundle 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1
 
 " Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " Extension to ctrlp, for fuzzy command finder
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -256,9 +239,9 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Extension for ctrlp.vim, to have a command palette like sublime text 2
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
+Plug 'fisadev/vim-ctrlp-cmdpalette'
 
-Bundle 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 " powerline symbols
 let g:airline_powerline_fonts = 1
 let g:airline_symbols = {}
@@ -280,23 +263,23 @@ let g:airline_symbols.whitespace = 'Ξ'
 "let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Snippets
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-"Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+"Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
+Plug 'fisadev/FixedTaskList.vim'
 
 " Surround
-Bundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Indent text object
-Bundle 'michaeljsmith/vim-indent-object'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
-Bundle 'klen/python-mode'
+Plug 'klen/python-mode'
 " Python-mode
 " Keys:
 " K             Show python docs
@@ -343,22 +326,19 @@ let g:pymode_syntax_all = 1
 " Highlight 'self' keyword
 let g:pymode_syntax_highlight_self = g:pymode_syntax_all
 
-Bundle 'junegunn/fzf'
-Bundle 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 nmap <leader>r :Rg<CR>
 
-" Autocompletion
-Bundle 'AutoComplPop'
-
 " Hashicorp goodies
-Bundle 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform'
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 au! BufNewFile,BufReadPost *.{tfvars,tf} set filetype=terraform
 autocmd FileType terraform setlocal ts=2 sts=2 sw=2 expandtab
 
 " Golang
-Bundle 'fatih/vim-go'
+Plug 'fatih/vim-go'
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -406,7 +386,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:syntastic_yaml_checkers = ['yamllint']
 
 " OPA
-"Bundle 'tsandall/vim-rego'
+"Plug 'tsandall/vim-rego'
 "let g:formatdef_rego = '"opa fmt"'
 "let g:formatters_rego = ['rego']
 "let g:autoformat_autoindent = 0
@@ -556,8 +536,9 @@ map <C-l> <C-]>
 "map <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Rust
-Bundle 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0"
+call plug#end()

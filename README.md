@@ -8,7 +8,7 @@ Stash of configuration files.
 
 Alacritty configuration files:
 
-* [.alacritty.yml](alacritty/.alacritty.yml) - Alacritty configuration file.
+* [.alacritty.toml](alacritty/.alacritty.toml) - Alacritty configuration file.
 
 ### bash
 
@@ -76,6 +76,7 @@ Zsh configuration files:
 ## More Information
 
 * [Alacritty][]
+* [Alacritty Themes][]
 * [Zsh][]
 * [Prezto][]
 * [Prezto Installation][]
@@ -85,3 +86,5 @@ Zsh configuration files:
 [Prezto Installation]: https://github.com/sorin-ionescu/prezto#installation
 [Zsh]: http://www.zsh.org/
 [Alacritty]: https://github.com/alacritty/alacritty
+[Alacritty Themes]: https://github.com/alacritty/alacritty-theme
+

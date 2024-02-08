@@ -35,6 +35,7 @@ alias burp.chrome='open -a "Google Chrome Canary" --args --proxy-server=http://l
 alias mh='mdown_html'
 alias myip='curl -s whatismyip.akamai.com'
 alias bubu='brew update && brew upgrade'
+alias czc='cz commit'
 
 if [ -z "${ZSH}" ]; then
     alias h='fc -l 1'

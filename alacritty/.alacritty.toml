@@ -1,0 +1,54 @@
+#Source: https://github.com/alacritty/alacritty-theme
+import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+
+[bell]
+animation = "EaseOutExpo"
+duration  = 0
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+bold   = { family = "MesloLGS NF", style = "Bold" }
+italic = { family = "MesloLGS NF", style = "Italic" }
+normal = { family = "MesloLGS NF", style = "Regular" }
+
+[keyboard]
+bindings = [
+{ chars  = "[", key = "LBracket", mods = "Alt" },
+{ chars  = "]", key = "RBracket", mods = "Alt" },
+{ chars  = "{", key = "LBracket", mods = "Alt|Shift" },
+{ chars  = "}", key = "RBracket", mods = "Alt|Shift" },
+{ chars  = " ", key = "Space", mods = "Alt" },
+{ chars  = "{", key = "Key8", mods = "Alt|Shift" },
+{ chars  = "}", key = "Key9", mods = "Alt|Shift" },
+{ chars  = "[", key = "Key8", mods = "Alt" },
+{ chars  = "]", key = "Key9", mods = "Alt" },
+{ chars  = "@", key = "Key2", mods = "Alt" },
+{ chars  = "\u001E", key = "Key6", mods = "Control" },
+{ chars  = "\u001BOH", key = "Home", mode = "AppCursor" },
+{ chars  = "\u001B[H", key = "Home", mode = "~AppCursor" },
+{ chars  = "\u001BOF", key = "End", mode = "AppCursor" },
+{ chars  = "\u001B[F", key = "End", mode = "~AppCursor" },
+{ action = "SpawnNewInstance", key = "N", mods = "Command" },
+{ action = "Paste", key = "V", mods = "Command" },
+{ action = "Copy", key = "C", mods = "Command" },
+{ action = "Quit", key = "Q", mods = "Command" },
+]
+
+[mouse]
+hide_when_typing = true
+bindings = [
+{ action = "PasteSelection", mouse = "Middle"},
+]
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard     = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+dynamic_title = true
+opacity       = 1.0
