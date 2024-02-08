@@ -16,7 +16,7 @@ set wildmode=list:longest " Show all alternatives and complete furtherest possib
 set completeopt=menuone,noselect " nvim-compe configuration
 set background=dark
 set colorcolumn=80     " Vertical line on column 80
-set cursorline
+"set cursorline
 set cursorcolumn
 let mapleader = ","
 set nonumber
@@ -48,10 +48,9 @@ autocmd vimrc BufWritePre * :%s/\s\+$//e "clean extra whitespace on write
 let c_space_errors=1
 
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -82,20 +81,33 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'google/vim-jsonnet'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+"Plug 'gruvbox-community/gruvbox'
+"Plug 'folke/tokyonight.nvim'
+Plug 'navarasu/onedark.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MunifTanjim/nui.nvim'
 
 call plug#end()
 
-colorscheme gruvbox
-let g:gruvbox_guisp_fallback = "bg"
-let g:gruvbox_contrast_dark='hard'
+set termguicolors
+"colorscheme tokyonight-night
+let g:onedark_config = {
+    \ 'style': 'deep',
+\}
+colorscheme onedark
 let g:bargreybars_auto=0
+"let g:airline_theme='deus'
+let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 let g:airline_symbols = {}
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.spell = 'Š'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.maxlinenr = ''
@@ -115,6 +127,9 @@ autocmd vimrc FileType json setlocal expandtab tabstop=2 shiftwidth=2
 autocmd vimrc FileType markdown set wrap
 autocmd vimrc FileType go setlocal nolist listchars&    " don't print tabs in go files
 autocmd vimrc FileType make setlocal nolist listchars&    " don't print tabs in go files
+
+" MArkdown
+let g:markdown_minlines = 500
 
 " Rust
 let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
@@ -136,14 +151,17 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" fzf bindings - mimic telescope https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings
+let $FZF_DEFAULT_OPTS="--bind \"ctrl-d:preview-down,ctrl-u:preview-up\""
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
+"
 " Split screen vertically and move between screens.
 map <leader>v :vsp<CR>
 map <leader>w <C-W>w
@@ -167,7 +185,8 @@ nmap <leader>r :Rg<CR>
 nmap <leader>g :GitFiles<CR>
 nmap <leader>c :Commits<CR>
 nmap <leader>f :Files<CR>
-nmap <leader>d :NERDTreeToggle<CR>
+"nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>d :Neotree toggle<CR>
 nmap <leader>b :Buffers<CR>
 nnoremap <C-J> :bprev<CR>
 nnoremap <C-K> :bnext<CR>
@@ -179,6 +198,7 @@ require('gitsigns').setup()
 require("symbols-outline").setup()
 require("todo-comments").setup()
 require("which-key").setup()
+require'lspconfig'.marksman.setup{}
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -250,7 +270,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', "gopls", "yamlls" }
+local servers = { 'pyright', "gopls", "yamlls", "tsserver", "terraformls"  }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
@@ -294,6 +314,8 @@ require'nvim-treesitter.configs'.setup {
       "regex",
       "ruby",
       "rust",
+      "terraform",
+      "typescript",
       "toml",
       "yaml"
     },
@@ -302,6 +324,9 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = { enable = true },
 }
 EOF
+
+autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
+autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 
 " Abbreviations
 iab   _pi_      3.1415926535897932384626433832795028841972
