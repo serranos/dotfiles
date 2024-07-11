@@ -73,3 +73,6 @@ source ~/.bashrc.vagrant
 
 # Bitwarden completion
 eval "$(bw completion --shell zsh); compdef _bw bw;"
+
+# Commitizen completion
+eval "$(register-python-argcomplete cz)"
