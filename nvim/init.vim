@@ -62,7 +62,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'Malabarba/beacon'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'stevearc/dressing.nvim'
@@ -124,6 +130,7 @@ let g:airline#extension#tabline#formatter='unique_tail'
 autocmd vimrc FileType ruby setlocal expandtab tabstop=2 shiftwidth=2
 autocmd vimrc FileType yaml setlocal expandtab tabstop=2 shiftwidth=2
 autocmd vimrc FileType json setlocal expandtab tabstop=2 shiftwidth=2
+autocmd vimrc FileType html setlocal expandtab tabstop=2 shiftwidth=2
 autocmd vimrc FileType markdown set wrap
 autocmd vimrc FileType go setlocal nolist listchars&    " don't print tabs in go files
 autocmd vimrc FileType make setlocal nolist listchars&    " don't print tabs in go files
@@ -199,30 +206,38 @@ require("symbols-outline").setup()
 require("todo-comments").setup()
 require("which-key").setup()
 require'lspconfig'.marksman.setup{}
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
 
-  source = {
-    path = true;
-    buffer = true;
-    nvim_lsp = true;
-  };
-}
-EOF
-
-lua << EOF
 local nvim_lsp = require('lspconfig')
+local cmp = require'cmp'
+cmp.setup {
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+    }, {
+      { name = 'buffer' },
+    })
+}
+
+-- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
@@ -255,7 +270,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
@@ -272,7 +287,10 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = { 'pyright', "gopls", "yamlls", "tsserver", "terraformls"  }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 end
 
 require('lspconfig')['rust_analyzer'].setup{
@@ -296,11 +314,9 @@ require('lspconfig')['rust_analyzer'].setup{
           useParameterNames = true
         },
       },
+    capabilities = capabilities
 }
 
-EOF
-
-lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
       "bash",
@@ -322,6 +338,7 @@ require'nvim-treesitter.configs'.setup {
   highlight = { enable = true },
   -- indent = { enable = true },
   incremental_selection = { enable = true },
+  capabilities = capabilities,
 }
 EOF
 
