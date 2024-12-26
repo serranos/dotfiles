@@ -32,7 +32,7 @@ noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
-" The empty entry (,,) matches files that have no extension (e.g. prefer
+" The empty entry (,,) matches fi
 " 'prog.c' over 'prog'.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyo,.pyc,,.rbc
 
@@ -87,7 +87,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'google/vim-jsonnet'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 "Plug 'gruvbox-community/gruvbox'
 "Plug 'folke/tokyonight.nvim'
 Plug 'navarasu/onedark.nvim'
@@ -283,9 +283,39 @@ local on_attach = function(client, bufnr)
   end
 end
 
+require'lspconfig'.marksman.setup{
+  capabilities = capabilities
+}
+
+require('lspconfig').pyright.setup {
+    on_attach = on_attach,
+    settings = {
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          -- Ignore all files for analysis to exclusively use Ruff for linting
+          ignore = { '*' },
+        },
+      },
+    },
+    capabilities = {
+      textDocument = {
+        publishDiagnostics = {
+          tagSupport = {
+            valueSet = { 2 },
+          },
+        },
+      },
+    },
+}
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', "gopls", "yamlls", "tsserver", "terraformls"  }
+local servers = { "gopls", "yamlls", "ts_ls", "terraformls"  }
+local servers = { "gopls", "yamlls", "ts_ls", "terraformls", "ruff" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -342,8 +372,11 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+" Format file on-write
 autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
 autocmd BufWritePre *.tf lua vim.lsp.buf.format()
+autocmd BufWritePre *.py lua vim.lsp.buf.format()
+autocmd BufWritePre *.go lua vim.lsp.buf.format()
 
 " Abbreviations
 iab   _pi_      3.1415926535897932384626433832795028841972

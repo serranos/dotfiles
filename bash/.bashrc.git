@@ -7,6 +7,8 @@ alias gco='git checkout'
 alias gs='git status'
 alias gtc='git tc'
 alias glc='git lc'
+alias gfc='git clone'
+alias gfcr='git clone --recurse-submodules'
 
 if [ ! -z "${ZSH}" ]; then
     source /usr/local/etc/bash_completion.d/git-prompt.sh
