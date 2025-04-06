@@ -84,6 +84,9 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'google/vim-jsonnet'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+"Plug 'gruvbox-community/gruvbox'
+"Plug 'folke/tokyonight.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -259,33 +262,29 @@ require'lspconfig'.marksman.setup{
   capabilities = capabilities
 }
 
-local on_attach_pyright = function(client, _)
-    client.server_capabilities.hoverProvider = true
-end
-
 require('lspconfig').pyright.setup {
-  on_attach = on_attach_pyright,
-  settings = {
-    pyright = {
-      -- Using Ruff's import organizer
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        -- Ignore all files for analysis to exclusively use Ruff for linting
-        ignore = { '*' },
+    on_attach = on_attach,
+    settings = {
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
       },
-    },
-  },
-  capabilities = {
-    textDocument = {
-      publishDiagnostics = {
-        tagSupport = {
-          valueSet = { 2 },
+      python = {
+        analysis = {
+          -- Ignore all files for analysis to exclusively use Ruff for linting
+          ignore = { '*' },
         },
       },
     },
-  },
+    capabilities = {
+      textDocument = {
+        publishDiagnostics = {
+          tagSupport = {
+            valueSet = { 2 },
+          },
+        },
+      },
+    },
 }
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -375,25 +374,7 @@ require('outline').setup {
 }
 EOF
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:bargreybars_auto=0
-let g:airline_theme="base16_gruvbox_dark_medium"
-let g:airline_powerline_fonts=1
-let g:airline_symbols.branch = ''
-"let g:airline_symbols.crypt = '🔒'
-"let g:airline_symbols.spell = 'Š'
-"let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.paste = 'ρ'
-let g:airline#extension#tabline#enable=1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extension#tabline#left_sep=' '
-let g:airline#extension#tabline#left_alt_sep='|'
-let g:airline#extension#tabline#formatter='unique_tail'
-
+" Format file on-write
 autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
 autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 autocmd BufWritePre *.py lua vim.lsp.buf.format()
