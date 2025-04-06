@@ -12,7 +12,6 @@ set showmatch          " Show matching brackets.
 set softtabstop=4 tabstop=4 shiftwidth=4 expandtab " Default whitespace settings
 set viminfo='20,\"50   " read/write a .viminfo file, don't store more than 50 lines of registers
 set wildmode=list:longest " Show all alternatives and complete furtherest possible.
-"set completeopt=menuone,longest,preview " Better completion menu
 set completeopt=menuone,noselect " nvim-compe configuration
 set background=dark
 set colorcolumn=80     " Vertical line on column 80
@@ -32,7 +31,7 @@ noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
-" The empty entry (,,) matches files that have no extension (e.g. prefer
+" The empty entry (,,) matches fi
 " 'prog.c' over 'prog'.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyo,.pyc,,.rbc
 
@@ -50,7 +49,6 @@ let c_space_errors=1
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -58,7 +56,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'Malabarba/beacon'
@@ -80,52 +77,20 @@ Plug 'kosayoda/nvim-lightbulb'
 Plug 'rcarriga/nvim-notify'
 Plug 'zakharykaplan/nvim-retrail'
 Plug 'kylechui/nvim-surround'
-Plug 'simrat39/symbols-outline.nvim'
+Plug 'hedyhli/outline.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'google/vim-jsonnet'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
-"Plug 'gruvbox-community/gruvbox'
-"Plug 'folke/tokyonight.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-tree/nvim-web-devicons'
 Plug 'MunifTanjim/nui.nvim'
-
 call plug#end()
 
 set termguicolors
-"colorscheme tokyonight-night
-let g:onedark_config = {
-    \ 'style': 'deep',
-\}
-colorscheme onedark
-let g:bargreybars_auto=0
-"let g:airline_theme='deus'
-let g:airline_theme='luna'
-let g:airline_powerline_fonts=1
-let g:airline_symbols = {}
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.spell = 'Š'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = ''
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline#extension#tabline#enable=1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extension#tabline#left_sep=' '
-let g:airline#extension#tabline#left_alt_sep='|'
-let g:airline#extension#tabline#formatter='unique_tail'
 
 autocmd vimrc FileType ruby setlocal expandtab tabstop=2 shiftwidth=2
 autocmd vimrc FileType yaml setlocal expandtab tabstop=2 shiftwidth=2
@@ -143,15 +108,7 @@ let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lin
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
-noremap <silent><expr> <TAB>
-     \ pumvisible() ? "\<C-n>" :
-     \ <SID>check_back_space() ? "\<TAB>" :
-     \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -161,14 +118,6 @@ endfunction
 " fzf bindings - mimic telescope https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings
 let $FZF_DEFAULT_OPTS="--bind \"ctrl-d:preview-down,ctrl-u:preview-up\""
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-"
 " Split screen vertically and move between screens.
 map <leader>v :vsp<CR>
 map <leader>w <C-W>w
@@ -199,10 +148,14 @@ nnoremap <C-J> :bprev<CR>
 nnoremap <C-K> :bnext<CR>
 
 lua << EOF
+require('onedark').setup {
+    style = 'darker'
+}
+require('onedark').load()
+
 require("nvim-autopairs").setup()
 require('fidget').setup()
 require('gitsigns').setup()
-require("symbols-outline").setup()
 require("todo-comments").setup()
 require("which-key").setup()
 require'lspconfig'.marksman.setup{}
@@ -274,18 +227,70 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-  -- Customize E W signs
   -- Dependency: nerdfonts
-  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-  for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
-  end
+  vim.diagnostic.config({
+    signs = {
+      text = {
+         [vim.diagnostic.severity.ERROR] = " ",
+         [vim.diagnostic.severity.WARN]  = " ",
+         [vim.diagnostic.severity.INFO]  = " ",
+         [vim.diagnostic.severity.HINT]  = " ",
+      },
+      linehl = {
+         [vim.diagnostic.severity.ERROR] = "Error",
+         [vim.diagnostic.severity.WARN]  = "Warn",
+         [vim.diagnostic.severity.INFO]  = "Info",
+         [vim.diagnostic.severity.HINT]  = "Hint",
+      },
+    },
+    virtual_text = { current_line = true },
+    virtual_lines = {
+      -- Only show virtual line diagnostics for the current cursor line
+      current_line = true,
+    },
+    DiagnosticUnderlineError = { undercurl = true },
+    DiagnosticUnderlineHint = { undercurl = true },
+    DiagnosticUnderlineInfo = { undercurl = true },
+    DiagnosticUnderlineWarn = { undercurl = true },
+  })
 end
+
+require'lspconfig'.marksman.setup{
+  capabilities = capabilities
+}
+
+local on_attach_pyright = function(client, _)
+    client.server_capabilities.hoverProvider = true
+end
+
+require('lspconfig').pyright.setup {
+  on_attach = on_attach_pyright,
+  settings = {
+    pyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        ignore = { '*' },
+      },
+    },
+  },
+  capabilities = {
+    textDocument = {
+      publishDiagnostics = {
+        tagSupport = {
+          valueSet = { 2 },
+        },
+      },
+    },
+  },
+}
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', "gopls", "yamlls", "tsserver", "terraformls"  }
+local servers = { "gopls", "yamlls", "ts_ls", "terraformls", "ruff" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -318,7 +323,7 @@ require('lspconfig')['rust_analyzer'].setup{
 }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = {
       "bash",
       "comment",
       "dockerfile",
@@ -340,10 +345,59 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = { enable = true },
   capabilities = capabilities,
 }
+
+require('outline').setup {
+  on_attach = on_attach,
+  outline_items = {
+    show_symbol_lineno = true,
+  },
+  symbol_folding = {
+    -- Depth past which nodes will be folded by default. Set to false to unfold all on open.
+    autofold_depth = 1,
+    -- When to auto unfold nodes
+    auto_unfold = {
+      -- Auto unfold currently hovered symbol
+      hovered = true,
+      -- Auto fold when the root level only has this many nodes.
+      -- Set true for 1 node, false for 0.
+      only = true,
+    },
+    markers = { '▸', '' }
+  },
+  symbols = {
+    icons = {
+      Function = { icon = 'ƒ', hl = 'Function' }
+    },
+  },
+  vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
+  { desc = "Toggle Outline" }),
+  capabilities = capabilities
+}
 EOF
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:bargreybars_auto=0
+let g:airline_theme="base16_gruvbox_dark_medium"
+let g:airline_powerline_fonts=1
+let g:airline_symbols.branch = ''
+"let g:airline_symbols.crypt = '🔒'
+"let g:airline_symbols.spell = 'Š'
+"let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.paste = 'ρ'
+let g:airline#extension#tabline#enable=1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extension#tabline#left_sep=' '
+let g:airline#extension#tabline#left_alt_sep='|'
+let g:airline#extension#tabline#formatter='unique_tail'
 
 autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
 autocmd BufWritePre *.tf lua vim.lsp.buf.format()
+autocmd BufWritePre *.py lua vim.lsp.buf.format()
+autocmd BufWritePre *.go lua vim.lsp.buf.format()
 
 " Abbreviations
 iab   _pi_      3.1415926535897932384626433832795028841972

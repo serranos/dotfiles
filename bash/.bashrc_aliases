@@ -37,6 +37,8 @@ alias mh='mdown_html'
 alias myip='curl -s whatismyip.akamai.com'
 alias bubu='brew update && brew upgrade'
 alias czc='cz commit'
+alias lg='lazygit'
+alias drmi='docker rmi -f $(docker images -qa)'
 
 if [ -z "${ZSH}" ]; then
     alias h='fc -l 1'
