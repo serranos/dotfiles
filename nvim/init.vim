@@ -374,6 +374,25 @@ require('outline').setup {
 }
 EOF
 
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:bargreybars_auto=0
+let g:airline_theme="base16_gruvbox_dark_medium"
+let g:airline_powerline_fonts=1
+let g:airline_symbols.branch = ''
+"let g:airline_symbols.crypt = '🔒'
+"let g:airline_symbols.spell = 'Š'
+"let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.paste = 'ρ'
+let g:airline#extension#tabline#enable=1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extension#tabline#left_sep=' '
+let g:airline#extension#tabline#left_alt_sep='|'
+let g:airline#extension#tabline#formatter='unique_tail'
+
 " Format file on-write
 autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
 autocmd BufWritePre *.tf lua vim.lsp.buf.format()
