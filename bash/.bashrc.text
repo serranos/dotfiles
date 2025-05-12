@@ -1,5 +1,5 @@
 export EDITOR="/usr/bin/nvim"
-export TT="$HOME/Documents/text_templates"
+export TT="$HOME/homeshare/text_templates"
 alias gott='cd "${TT}"'
 alias gottw='cd "${TT}"/work'
 alias gott='cd "${TT}"'

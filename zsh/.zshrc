@@ -59,7 +59,6 @@ source ~/apps/z/z.sh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # Add scoped configurations
-source ~/.bashrc.aws
 source ~/.bashrc.gcp
 source ~/.bashrc.git
 source ~/.bashrc.go
