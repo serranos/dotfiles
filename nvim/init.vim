@@ -147,6 +147,7 @@ nmap <leader>f :Files<CR>
 "nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>d :Neotree toggle<CR>
 nmap <leader>b :Buffers<CR>
+nmap <leader>t :TodoLocList<CR>
 nnoremap <C-J> :bprev<CR>
 nnoremap <C-K> :bnext<CR>
 
