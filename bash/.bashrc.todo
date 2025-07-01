@@ -1,3 +1,58 @@
+function handle-stop-exit {
+    export STOPWATCH_BYE=1
+    return
+}
+
+countdown() {
+    unset STOPWATCH_BYE
+    trap "handle-stop-exit" SIGINT
+    # Based on: https://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
+    if [ -z "$1" ]; then
+        echo "Usage: coundtdown <seconds>"
+        return
+    fi
+    cat >&2 <<-EOF
+
+           ________  ________   ______                  __
+   _ _    /_  __/ / / / ____/  / ____/___  __  ______  / /_   _ _
+  (_|_)    / / / /_/ / __/    / /   / __ \/ / / / __ \/ __/  (_|_)
+ _ _      / / / __  / /___   / /___/ /_/ / /_/ / / / / /_   _ _
+(_|_)    /_/ /_/ /_/_____/   \____/\____/\__,_/_/ /_/\__/  (_|_)
+
+    TOTAL: $1 seconds
+
+EOF
+    start="$(( $(date +%s) + $1))"
+    while [ "$start" -ge $(date +%s) ]; do
+        if [ ! -z "$STOPWATCH_BYE" ]; then
+            echo
+            return
+        fi
+        days="$(($(($(( $start - $(date +%s) )) * 1 )) / 86400))"
+        time="$(( $start - `date +%s` ))"
+        printf 'tic-tac tic-tac: %s day(s) and %s\r' "$days" "$(date -u -d "@$time" +%H:%M:%S)"
+        # hack to avoid clogging the cpu
+        sleep 0.1
+    done
+}
+
+stopwatch() {
+    # Based on: https://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
+    unset STOPWATCH_BYE
+    trap "handle-stop-exit" SIGINT
+    start=$(date +%s)
+    while true; do
+        if [ ! -z "$STOPWATCH_BYE" ]; then
+            echo
+            return
+        fi
+        time="$(( $(date +%s) - $start))"
+        printf 'Time is counting: %s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+        # hack to avoid clogging the cpu
+        sleep 0.1
+    done
+}
+
 if [ -n "$BASH_VERSION" ]
 then
     source $HOME/.bash_completion.d/todo_completion;
